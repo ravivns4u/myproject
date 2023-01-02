@@ -1,0 +1,90 @@
+@import '../../../../../../styles/global/variables';
+@import '../../../../Sidebar/Sidebar.module.scss';
+
+.TopNavigationBar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.RowNavigationButtons {
+  display: flex;
+  width: 100%;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
+.RowElementInactive {
+  color: $dark-grey;
+  transition: color 0.3s ease;
+  cursor: pointer;
+  font-size: 20px;
+  margin-right: 15px;
+}
+
+.RowActive {
+  color: #efc753;
+  border-bottom: 1px solid #efc753;
+  font-weight: bold;
+  transition: color 0.3s ease;
+  cursor: pointer;
+  font-size: 20px;
+  padding-bottom: 4px;
+  font-weight: 400;
+}
+
+.CTAButton {
+  min-width: 15rem;
+  font-size: $font-size-small;
+  font-weight: 500;
+  border-radius: 0.75rem;
+  text-transform: none;
+  height: 36px;
+}
+
+@media screen and (max-width: 991px) {
+   
+  .RowElementInactive {
+    margin-right: 15px;
+    margin-left: 0px;
+    font-size: 14px;
+  }
+
+  .RowActive {
+    margin-right: 15px;
+  }
+
+  .RowNavigationButtons {
+    gap: 0rem;
+  }
+
+  .RowActive {
+    font-size: 14px;
+  }
+
+  .TopNavigationBar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .CTAButton {
+    height: 32px;
+    font-size: 11px  !important;
+    min-width: 10rem !important;
+    position: absolute;
+    top: 24px;
+    right: 14px;
+  }
+
+  .CTAButton span {
+    margin-right: 2px;
+    margin-left: -3px;
+  }
+
+  .CTAButton span svg {
+    font-size: 13px;
+  }
+
+}

@@ -1,0 +1,73 @@
+import Document, {
+  Html,
+  Head,
+  Main,
+  NextScript,
+  DocumentContext,
+} from 'next/document';
+import React from 'react';
+import createEmotionServer from '@emotion/server/create-instance';
+import theme from '../styles/mui/themes';
+import createEmotionCache from '../styles/mui/emotioncache';
+
+export default class MyDocument extends Document {
+
+  render() {
+	const pageProps = this.props?.__NEXT_DATA__?.props?.pageProps;
+	
+    return (
+      <Html>
+        <Head>
+          <link rel='preconnect' href='https://fonts.googleapis.com' />
+          <link rel='preconnect' href='https://fonts.gstatic.com' />
+          <link
+            href='https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap'
+            rel='stylesheet'
+          />
+          <meta name='theme-color' content={theme.palette.primary.main} />
+          <link rel='shortcut icon' href='/logo-dark.png' />
+
+          {
+            //@ts-ignore
+            this.props.emotionStyleTags
+          }
+        </Head>
+        <body className={pageProps.isDark ? 'dark-mode' : 'light-mode'}>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    );
+  }
+}
+
+MyDocument.getInitialProps = async (ctx: DocumentContext) => {
+  const originalRenderPage = ctx.renderPage;
+  const cache = createEmotionCache();
+  const { extractCriticalToChunks } = createEmotionServer(cache);
+
+  ctx.renderPage = () =>
+    originalRenderPage({
+      enhanceApp: (App) =>
+        function EnhanceApp(props) {
+          // @ts-ignore
+          return <App emotionCache={cache} {...props} />;
+        },
+    });
+
+  const initialProps = await Document.getInitialProps(ctx);
+  const emotionStyles = extractCriticalToChunks(initialProps.html);
+  const emotionStyleTags = emotionStyles.styles.map((style) => (
+    <style
+      data-emotion={`${style.key} ${style.ids.join(' ')}`}
+      key={style.key}
+      // eslint-disable-next-line react/no-danger
+      dangerouslySetInnerHTML={{ __html: style.css }}
+    />
+  ));
+
+  return {
+    ...initialProps,
+    emotionStyleTags,
+  };
+};

@@ -1,0 +1,117 @@
+@import '../../../../../../../../styles/root.scss';
+
+$nav-pointer-dim: 1rem;
+$mover-pos: 45%;
+$multiplication-factor: 2;
+.ProductCaresoul {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  flex-direction: column;
+}
+
+.SquareAvatar {
+  height: 100%;
+  width: auto;
+  & img {
+    object-fit: contain;
+    object-position: center;
+  }
+}
+.NavigationItem {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  &_Active {
+    height: $nav-pointer-dim;
+    width: $nav-pointer-dim;
+    border-radius: 50%;
+    background-color: #ccc;
+  }
+  &_Passive {
+    height: $nav-pointer-dim;
+    width: $nav-pointer-dim;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+  }
+}
+
+.ProductCaresoul_Image {
+  height: 100%;
+  flex: 8;
+  margin-bottom: 0.5rem;
+  position: relative;
+  &_left {
+    position: absolute;
+    top: $mover-pos;
+    left: 0;
+    color: #ccc;
+    font-size: $nav-pointer-dim * $multiplication-factor;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+  }
+  &_right {
+    position: absolute;
+    top: $mover-pos;
+    right: 0;
+    color: #ccc;
+    font-size: $nav-pointer-dim * $multiplication-factor;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+  }
+  &_left:hover,
+  &_right:hover {
+    transform: scale(1.1);
+  }
+}
+
+.ErrorBox,
+.InfoBox {
+  min-height: 22rem;
+  border: 2px dotted red;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.ErrorIcon,
+.InfoIcon {
+  font-size: $nav-pointer-dim * 4;
+  color: red;
+}
+.ErrorMessage,
+.InfoMessage {
+  font-size: $nav-pointer-dim * 2;
+  color: red;
+}
+
+.InfoBox {
+  border: 2px dotted $light-grey-v3;
+}
+.InfoIcon,
+.InfoMessage {
+  color: $dark-grey-v2;
+}
+
+@media screen and (max-width: 767px) {
+   
+  .InfoBox {
+    min-height: 9rem;
+    margin: 20px 0px;
+
+  }
+
+  .InfoMessage {
+    font-size: 1rem;
+  }
+
+
+
+ }

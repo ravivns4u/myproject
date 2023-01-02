@@ -1,0 +1,663 @@
+.FullPageContainer {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.NormalHeadingForInstruction {
+  font-family: "Poppins";
+  font-size: 1.4rem;
+}
+
+.Header {
+  width: 100%;
+  background-color: #000;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.Header_logo {
+  height: 5rem;
+  overflow: hidden;
+  margin: 0.5rem 0;
+  aspect-ratio: 1/1;
+}
+
+.MiddleAlign {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 80vh;
+}
+
+.InRowWithGap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.submitButton {
+  background-color: #000;
+  color: #e9db1c;
+  padding: 0.5rem;
+  border-radius: 0.2rem;
+  border: none;
+  outline: none;
+  -webkit-transition: 0.3ms ease all;
+  transition: 0.3ms ease all;
+  cursor: pointer;
+}
+
+.submitButton:hover {
+  background-color: #e9db1c;
+  color: #000;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.alignEnd {
+  float: right;
+}
+
+.fw {
+  width: 100%;
+}
+
+.rw {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.rw_end {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  gap: 1rem;
+  width: 100%;
+}
+
+.cw {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.fxc {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.ma-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.ma-col {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.wrapperCentered {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.fitVertically {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  width: 100%;
+}
+
+.debugger {
+  background-color: red;
+  border: 2px solid green;
+}
+
+.topOffset {
+  margin-top: 6rem;
+}
+
+.success-green {
+  color: #fff;
+}
+
+.error-red {
+  color: #ff0000;
+}
+
+.ThemeButtonActive {
+  color: #ffff00;
+  background: #000 !important;
+}
+
+.ThemeButtonActive:hover {
+  color: #ffff00;
+  background: #000 !important;
+}
+
+.CTAButton {
+  min-width: 13rem !important;
+  font-size: 1rem !important;
+  font-weight: 500;
+  border-radius: 5px !important;
+  text-transform: none;
+}
+
+.ThemeButtonInActive {
+  color: #000;
+}
+
+.ThemeButtonInActive:hover {
+  color: #f30000;
+}
+
+.ThemeButtonYellow {
+  color: #000;
+  background-color: #efc753;
+}
+
+.ThemeButtonYellow:hover {
+  background-color: #efc753;
+  color: #000;
+}
+
+.ThemeButtonBlack {
+  color: #efc753;
+  background-color: #000;
+}
+
+.ThemeButtonBlack:hover {
+  color: #efc753;
+  background-color: #000;
+}
+
+.MuiDataGrid-viewport,
+.MuiDataGrid-row,
+.MuiDataGrid-renderingZone {
+  max-height: -webkit-fit-content !important;
+  max-height: -moz-fit-content !important;
+  max-height: fit-content !important;
+}
+
+.MuiDataGrid-cell {
+  max-height: -webkit-fit-content !important;
+  max-height: -moz-fit-content !important;
+  max-height: fit-content !important;
+  overflow: auto;
+  white-space: initial !important;
+  line-height: 16px !important;
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+
+.MuiDataGrid-virtualScroller {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.MuiDataGrid-virtualScroller::-webkit-scrollbar {
+  display: none;
+  width: 0;
+}
+
+.ThinScrollbar {
+  /* Track */
+  /* Handle */
+  /* Handle on hover */
+}
+
+.ThinScrollbar::-webkit-scrollbar {
+  width: 0.25rem;
+}
+
+.ThinScrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.ThinScrollbar::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+.ThinScrollbar::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.ThinScrollbar_2 {
+  /* Track */
+  /* Handle */
+  /* Handle on hover */
+}
+
+.ThinScrollbar_2::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+.ThinScrollbar_2::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.ThinScrollbar_2::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+.ThinScrollbar_2::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.MuiDataGrid-columnHeaders {
+  background: #eee;
+}
+
+.approvalGreen {
+  color: #18da18;
+}
+
+@media screen and (max-width: 767px) {
+  .BodyContainer .CTAButton {
+    position: absolute;
+    top: 0px;
+    height: 30px;
+  }
+  .ThemeButtonActive {
+    color: #fff !important;
+  }
+  .topOffset {
+    margin-top: 6em;
+  }
+  .topOffset .rw_end {
+    text-align: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .topOffset .rw_end button {
+    font-size: 16px;
+    padding: 0px 0px;
+  }
+  .topOffset .rw_end .ActiveRouteClass {
+    font-size: 16px;
+    padding: 2px;
+    margin-right: 4px;
+  }
+  .topOffset .ThemeButtonBlack {
+    width: 25rem;
+    margin-top: 0px;
+  }
+  .footerGrid1 {
+    display: none;
+  }
+}
+
+@-webkit-keyframes fadeAway {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@keyframes fadeAway {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+.SideBarContainer {
+  width: 100%;
+  height: 100%;
+  padding: 0px 0px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  font-family: "Poppins";
+  text-align: center;
+}
+
+.CircularAvatar {
+  height: 4rem;
+  width: 4rem;
+  font-size: 3rem;
+  aspect-ratio: 1/1;
+  margin: 0 auto;
+}
+
+.NameHeader {
+  font-size: 18px;
+  font-weight: 500;
+  color: #000;
+  margin: 0;
+  margin-top: 5px;
+}
+
+.Profession {
+  font-size: 12px;
+  color: #000;
+  margin: 0;
+  padding: 0;
+}
+
+.EditButton span {
+  margin-left: 0px;
+  margin-right: 4px;
+}
+
+.EditButton span svg {
+  font-size: 10px !important;
+}
+
+.EditButton {
+  margin: 0.5rem auto;
+  background-color: #000;
+  min-width: auto;
+  color: #fff;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  padding: 7px 10px;
+  line-height: 1;
+  font-size: 11px;
+  position: absolute;
+  top: 0px;
+  right: 17px;
+  text-transform: capitalize;
+  padding-right: 9px;
+}
+
+.EditButton:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+.Bio {
+  font-size: 0.85rem;
+  color: #000;
+  margin: 0.75rem auto;
+  padding: 0 0.4rem;
+  font-weight: 300;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.ButtonSpecs {
+  width: 93%;
+  margin: 0rem auto;
+  text-transform: capitalize;
+  font-size: 17px;
+  background-color: #eeeeee;
+  text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 5px 22px;
+  margin-bottom: 10px;
+}
+
+@media screen and (max-width: 991px) {
+  .ButtonSpecs {
+    padding: 1px 22px;
+    font-size: 14px;
+    width: auto;
+    color: #efc753;
+    display: none;
+  }
+  .ButtonSpecs.ThemeButtonInActive {
+    color: #fff;
+  }
+}
+
+.RowNavigationButtons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
+.RowElementInactive {
+  color: #848484;
+  -webkit-transition: color 0.3s ease;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.RowActive {
+  color: #000;
+  border-bottom: 2px solid #000;
+  font-weight: bold;
+  -webkit-transition: color 0.3s ease;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.BodyContainer {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 2rem;
+  gap: 0.5rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  font-family: "Poppins";
+}
+
+.TopNavigationBar {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.CTAButton {
+  min-width: 15rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 0.75rem;
+  text-transform: none;
+}
+
+.DataGrid {
+  margin-top: 1rem;
+}
+
+.DataGrid_header {
+  background-color: #eee;
+  color: #000;
+}
+
+.SquareAvatar {
+  height: 6rem;
+  width: 6rem;
+  font-size: 3rem;
+  aspect-ratio: 1/1;
+  border-radius: 1rem;
+  margin: 0 0.8rem;
+}
+
+.SquareAvatar_Services {
+  height: 6.4rem;
+  width: 6.4rem;
+  font-size: 3rem;
+  aspect-ratio: 1/1;
+  border-radius: 1rem;
+  margin: 0 0.8rem;
+}
+
+.Description {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  text-overflow: clip;
+}
+
+.ActionButtons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 0.2rem;
+  padding: 0.5rem;
+}
+
+.ActionIconColor {
+  color: #848484;
+  cursor: pointer;
+  -webkit-transition: -webkit-transform 0.3s ease;
+  transition: -webkit-transform 0.3s ease;
+  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, -webkit-transform 0.3s ease;
+  font-size: 30px;
+  padding: 7px;
+  background: #f30000;
+  color: #fff;
+  border-radius: 3px;
+}
+
+.ActionIconColor:hover {
+  -webkit-transform: scale(0.98);
+          transform: scale(0.98);
+}
+
+.ActionIconColor:last-child {
+  background-color: green;
+  margin-left: 5px;
+}
+
+.ImageAvatarGroup {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.ImageAvatarGroup_SqAv {
+  height: 4.8rem;
+  width: 4.8rem;
+  font-size: 3rem;
+  aspect-ratio: 1/1;
+  border-radius: 1rem;
+  margin: 0 0.8rem;
+}
+
+.SuccessGreen {
+  color: #45aa2b;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+
+.SuccessGreen:hover {
+  -webkit-transform: scale(1.25);
+          transform: scale(1.25);
+}
+
+.ErrorRed {
+  color: #ff0000;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+
+.ErrorRed:hover {
+  -webkit-transform: scale(1.25);
+          transform: scale(1.25);
+}
+
+@media screen and (max-width: 991px) {
+  .SquareAvatar {
+    width: 4rem;
+    height: 4rem;
+  }
+  .ActionIconColor {
+    width: 0.7em;
+    height: 0.7em;
+    padding: 4px;
+  }
+}
+/*# sourceMappingURL=common.module.css.map */

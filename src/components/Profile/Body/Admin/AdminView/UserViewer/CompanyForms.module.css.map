@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,gBAAgB,CAAC;EACf,OAAO,EAAE,IAAI;EACb,KAAK,EAAE,IAAI;EACX,GAAG,EAAE,IAAI;EACT,cAAc,EAAE,GAAG;CACpB;;AAGE,AAAD,cAAG,CAAC;EACF,IAAI,EAAE,CAAC;EACP,MAAM,EAAE,aAAa;CACtB;;AACA,AAAD,cAAG,CAAC;EACF,IAAI,EAAE,CAAC;EACP,MAAM,EAAE,aAAa;CACtB;;AAGH,AAAA,eAAe,CAAC;EACd,gBAAgB,EAAE,OAAO;EACzB,SAAS,EAAE,KAAK;CACjB",
+    "sources": [
+        "CompanyForms.module.scss"
+    ],
+    "names": [],
+    "file": "CompanyForms.module.css"
+}

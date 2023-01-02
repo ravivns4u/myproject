@@ -1,0 +1,10 @@
+import auth, { app, analytics, storage } from './firebase_client';
+
+const firebaseClient = {
+  auth,
+  app,
+  analytics,
+  storage,
+};
+
+export default firebaseClient;

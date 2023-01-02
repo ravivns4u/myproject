@@ -1,0 +1,23 @@
+.LoginColumnGrid {
+  display: flex;
+  width: 100%;
+  gap: 1rem;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.LoginColumn {
+  &_1 {
+    flex: 1;
+    border: 2px solid red;
+  }
+  &_2 {
+    flex: 1;
+    border: 2px solid red;
+  }
+}
+
+.FormInputField {
+  background-color: #ffffff;
+  min-width: 20rem;
+}

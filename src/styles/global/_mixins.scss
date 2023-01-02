@@ -1,0 +1,47 @@
+@mixin respond($breakpoint) {
+  @if $breakpoint == media-less-than-320 {
+    @media (min-width: 0px) and (max-width: 320px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == media-320-480 {
+    @media (min-width: 320px) and (max-width: 480px) {
+      @content;
+    }
+  }
+  @if $breakpoint == media-480-600 {
+    @media (min-width: 480px) and (max-width: 600px) {
+      @content;
+    }
+  }
+  @if $breakpoint == media-600-768 {
+    @media (min-width: 600px) and (max-width: 768px) {
+      @content;
+    }
+  }
+  @if $breakpoint == media-768-900 {
+    @media (min-width: 768px) and (max-width: 900px) {
+      @content;
+    }
+  }
+  @if $breakpoint == media-900-1024 {
+    @media (min-width: 900px) and (max-width: 1024px) {
+      @content;
+    }
+  }
+  @if $breakpoint == media-1024-1280 {
+    @media (min-width: 1024px) and (max-width: 1280px) {
+      @content;
+    }
+  }
+  @if $breakpoint == media-more-than-1280 {
+    @media (min-width: 1280px) {
+      @content;
+    }
+  }
+  /*
+  To Check Screen Resolution:
+  if(typeof window !== 'undefined')console.log(window.innerWidth)
+  */
+}

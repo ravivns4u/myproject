@@ -1,0 +1,16 @@
+@import '../../../../../../styles/global/variables';
+@import '../../../../Sidebar/Sidebar.module.scss';
+.DataGrid {
+  margin-top: 1rem;
+  min-width: 600px;
+  &_header {
+    background-color: $light-grey-v2;
+    color: $primary-dark;
+  }
+}
+
+.DataGridBox{
+  &::-webkit-scrollbar {
+    width: 1em;
+  }
+}

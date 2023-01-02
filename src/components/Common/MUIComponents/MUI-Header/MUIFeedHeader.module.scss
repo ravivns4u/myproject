@@ -1,0 +1,196 @@
+@import './MUIExternals.module.scss';
+
+.headermain {
+  border-bottom: 1px solid #eee !important;
+}
+.AppBar-root {
+  border-bottom: 1px solid #eee;
+}
+.feedCart{
+  color:#FFFF00;
+  width:3.8rem;
+  height:3.8rem;
+  margin-right:1.5rem;
+  margin-left: 1em;
+  cursor: pointer;
+  padding:1.2rem;
+  border-radius: 50%;
+  position: relative;
+}
+.MuiToolbar-regular {
+  width: 100%;
+}
+.css-1cndkqf-MuiToolbar-root {
+  display: flex;
+  width: 100%;
+}
+// .feedCart:hover{
+//   background:#f3f2f2;
+// }
+
+.spanHeaderIcons {
+  display: flex;
+}
+.forBorderHeaderIcon:hover {
+  border-bottom: 3px solid yellow;
+}
+
+.headerIcons {
+  font-size: small;
+  color: white;
+  gap: 6px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.headerIcons svg {
+  width: 30px;
+  height: 30px;
+}
+ 
+.headerIconsOR {
+  font-size: small;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.headerIconsOR:hover {
+  color: rgb(216, 216, 156);
+}
+
+.headerIcons:hover {
+  color: rgb(216, 216, 156);
+}
+
+.spanHeaderSideIcons {
+  display: flex;
+  column-gap: 2rem;
+  align-items: center;
+}
+
+.headerSideIcons {
+  background-color: yellow;
+  color: black;
+}
+
+.iconHeaderSideIcon {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.headerSideIcons:hover {
+  background-color: rgb(224, 224, 5);
+}
+
+.EmptySpace {
+  flex: auto;
+  border: 2px solid red;
+}
+
+.accountsCircle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  position: absolute;
+  right: 5px;
+}
+
+.LngoutMnvr .ImgLngotm img{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 5px;
+  background-color: #000;
+}
+
+.ImgLngotm {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 991px) {
+   .sideBar {
+     left: 0px;
+   }
+
+   .feedCart {
+    height: auto;
+    width: auto;
+    padding: 0px;
+    margin-right: 1.1em;
+  }
+  .accountsCircle {
+    align-items: center;
+    top: 2px;
+    gap: 0rem;
+
+  }
+
+  .BxCmvr, .CrtMnvSwn {
+    width: 18px;
+    height: 18px;
+    font-size: 8px;
+  }
+
+  .headerIcons svg {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: -7px;
+    top: 9px;
+  }
+
+  .LngoutMnvr .ImgLngotm img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 5px;
+  }
+
+  .ImgLngotm svg {
+    width: 12px;
+  }
+
+  
+
+  header.headermain {
+    z-index: 171;
+  }
+  
+  .feedCart {
+    margin-right: 0px;
+    margin-left: 0px;
+  }
+
+  .feedCart svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .LngoutMnvr .ImgLngotm img {
+    width: 34px;
+    height: 34px;
+  }
+  .ImgLngotm svg {
+    width: 10px;
+  }
+
+  .accountsCircle {
+    line-height: 0;
+  }
+
+  .feedCart {
+    margin-right: 18px;
+    margin-left: 10px;
+  }
+
+
+
+ }

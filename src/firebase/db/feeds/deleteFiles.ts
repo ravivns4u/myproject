@@ -1,0 +1,62 @@
+import { constDocumentRefs } from '../../constants/firestore';
+import Server from '../../firebase_server_exports';
+import type {
+  DeletePointer,
+  DeletePointer1,
+  DeletePointerService,
+} from '../../../redux/interfaces/backend/apis/deleteInterfaces';
+import { databaseEntryExists } from '../../../lib/backend/v2/utils/pathVerifier';
+
+export const deleteMerchant = async (
+  data: DeletePointer | DeletePointerService
+) => {
+  switch (data.deleteOperationType) {
+    case 'images': {
+      return await deleteImageFeed(data as DeletePointer);
+    }
+    case 'services': {
+      return await deleteServicesPortfolio(data as DeletePointerService);
+    }
+    default: {
+      console.log('Undefined Operation: ', data.deleteOperationType, data);
+      return { error: true };
+    }
+  }
+};
+
+const deleteImageFeed = async (data: DeletePointer1) => {
+  const feedCollection = Server.db.collection(
+    `${constDocumentRefs.users_feed_image}`
+  );
+  try {
+    await feedCollection.doc(data.collectionId).delete();
+    await Server.storage
+      .bucket(process.env.FB_STORAGE_BUCKET_NAME)
+      .file(data.imagePath)
+      .delete();
+    return { error: false };
+  } catch (err) {
+    return { error: true };
+  }
+};
+
+const deleteServicesPortfolio = async (data: DeletePointerService) => {
+  const pathVariables = ['pending', 'verified', 'rejected'];
+  const allPaths = pathVariables.map(
+    (path) =>
+      `${constDocumentRefs.merchants_meta_loc}/${path}/${data.uid}/services-collection/${data.serviceImageLoc}`
+  );
+  const collectionAddress = (await databaseEntryExists(allPaths)) ?? '';
+  const documentValue = Server.db.doc(collectionAddress);
+  try {
+    await documentValue.delete();
+    await Server.storage
+      .bucket(process.env.FB_STORAGE_BUCKET_NAME)
+      .file(data.imagePath)
+      .delete();
+    return { error: false };
+  } catch (err) {
+    console.log('Error happened = ', data, '\n\n\n', err);
+    return { error: true };
+  }
+};

@@ -1,0 +1,15 @@
+BTC <- as.data.frame(BTC.charts)
+DASH <- as.data.frame(DASH.charts)
+ETH <- as.data.frame(ETH.charts)
+LTC <- as.data.frame(LTC.charts)
+PPC <- as.data.frame(PPC.charts)
+XLM <- as.data.frame(XLM.charts)
+XRP <- as.data.frame(XRP.charts)
+
+BTC <- BTC[BTC$date>='2016-01-10' & BTC$date<='2022-01-10',]
+DASH <- DASH[DASH$date>='2016-01-10' & DASH$date<='2022-01-10',]
+ETH <- ETH[ETH$date>='2016-01-10' & ETH$date<='2022-01-10',]
+LTC <- LTC[LTC$date>='2016-01-10' & LTC$date<='2022-01-10',]
+PPC <- PPC[PPC$date>='2016-01-10' & PPC$date<='2022-01-10',]
+XLM <- XLM[XLM$date>='2016-01-10' & XLM$date<='2022-01-10',]
+XRP <- XRP[XRP$date>='2016-01-10' & XRP$date<='2022-01-10',]

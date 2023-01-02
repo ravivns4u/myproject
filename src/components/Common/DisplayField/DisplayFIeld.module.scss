@@ -1,0 +1,14 @@
+.DisplayBox {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  align-items: flex-start;
+  width: 100%;
+}
+.DisplayLabel {
+  font-weight: bold;
+  text-align: left;
+}
+.DisplayValue {
+  font-weight: 400;
+}

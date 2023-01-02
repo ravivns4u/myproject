@@ -1,0 +1,123 @@
+@import '../../../../../styles/root.scss';
+@import '../../LoginForm/Login.module.scss';
+
+.RowElement {
+  display: flex;
+  flex-direction: row;
+  gap: 5rem;
+  @include respond(media-320-480) {
+    gap: 2rem;
+  }
+  @include respond(media-480-600) {
+    gap: 2rem;
+  }
+  @include respond(media-600-768) {
+    gap: 2rem;
+  }
+}
+
+.AvatarWrapper {
+  height: 18rem;
+  aspect-ratio: 1/1;
+  @include respond(media-320-480) {
+    height: 12rem;
+  }
+  @include respond(media-480-600) {
+    height: 12rem;
+  }
+  @include respond(media-600-768) {
+    height: 12rem;
+  }
+}
+
+.AvatarConfig {
+  object-fit: fill;
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+}
+.AvtarCfg {
+  border: none;
+  &_active {
+    border: 2px solid $light-yellow;
+    animation: fadeAway 1s ease;
+    transition: all 0.3s ease-in;
+    cursor: pointer;
+    &:hover {
+      transform: scale(0.96);
+    }
+  }
+  &_inactive {
+    border: none;
+    animation: fadeAway 1s ease;
+    transition: all 0.3s ease-in;
+    cursor: pointer;
+    &:hover {
+      transform: scale(0.96);
+      border: 2px solid $light-yellow;
+    }
+  }
+}
+
+.Title {
+  font-family: $font-family;
+  font-size: $font-size-large;
+  font-weight: bold;
+  color: $primary-dark;
+}
+
+.OTPRow {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  & input::-webkit-outer-spin-button,
+  & input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  & input[type='number'] {
+    -moz-appearance: textfield;
+  }
+}
+
+.OTPInputBox {
+  padding: 0.2rem;
+  border: 1px solid $primary-dark;
+  font-size: $font-size-large;
+  max-width: 2.5rem;
+  height: 3rem;
+  &:not(:last-child) {
+    margin-right: 0.5rem;
+  }
+  text-align: center;
+}
+
+.OTPInpBx {
+  border: 1px solid $primary-dark;
+  font-size: $font-size-large;
+  height: 3rem;
+  width: 3rem;
+  &:not(:last-child) {
+    margin-right: 0.5rem;
+  }
+  text-align: center;
+}
+
+.OTPHeader {
+  font-family: $font-family;
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: $primary-dark;
+  margin: 0;
+  padding: 0;
+}
+
+.OTPGap {
+  width: 0.5rem;
+  height: 0.5rem;
+}

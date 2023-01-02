@@ -1,0 +1,184 @@
+@import '../../../../styles/global/variables';
+@import '../../Sidebar/Sidebar.module.scss';
+
+.RowNavigationButtons {
+  display: flex;
+  width: 100%;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
+.RowElementInactive {
+  color: $dark-grey;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.RowActive {
+  color: $primary-dark;
+  border-bottom: 2px solid $primary-dark;
+  font-weight: bold;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+.BodyContainer {
+  flex-grow: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  gap: 0.5rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  font-family: $font-family;
+}
+
+.TopNavigationBar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.CTAButton {
+  min-width: 15rem;
+  font-size: $font-size-small;
+  font-weight: 500;
+  border-radius: 0.75rem;
+  text-transform: none;
+}
+
+.DataGrid {
+  margin-top: 1rem;
+  &_header {
+    background-color: #eee;
+    color: $primary-dark;
+  }
+}
+
+.SquareAvatar {
+  height: 6rem;
+  width: 6rem;
+  font-size: $avatar-portfolio-font-size;
+  aspect-ratio: 1/1;
+  border-radius: 1rem;
+  margin: 0 0.8rem;
+}
+
+.SquareAvatar_Services {
+  height: $avatar-portfolio * 0.8;
+  width: $avatar-portfolio * 0.8;
+  font-size: $avatar-portfolio-font-size;
+  aspect-ratio: 1/1;
+  border-radius: 1rem;
+  margin: 0 0.8rem;
+}
+
+.Description {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  text-overflow: clip;
+}
+
+.ActionButtons {
+  display: flex;
+  gap: 0.2rem;
+  padding: 0.5rem;
+}
+
+.ActionIconColor {
+  color: #848484;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  font-size: 30px;
+  padding: 7px;
+  background: #f30000;
+  color: #fff;
+  border-radius: 3px;
+  &:hover {
+    transform: scale(0.98); 
+  }
+}
+
+.ActionIconColor:last-child {
+  background-color: green;
+  margin-left: 5px;
+}
+
+.ImageAvatarGroup {
+  display: flex;
+  align-items: center;
+  &_SqAv {
+    height: $avatar-portfolio * 0.6;
+    width: $avatar-portfolio * 0.6;
+    font-size: $avatar-portfolio-font-size;
+    aspect-ratio: 1/1;
+    border-radius: 1rem;
+    margin: 0 0.8rem;
+  }
+}
+.SuccessGreen {
+  color: $success-green;
+  transition: 0.3s ease;
+  &:hover {
+    transform: scale(1.25);
+  }
+}
+.ErrorRed {
+  color: $error-red;
+  transition: 0.3s ease;
+  &:hover {
+    transform: scale(1.25);
+  }
+}
+
+@media screen and (max-width: 991px) {
+
+  .SquareAvatar {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  .ActionIconColor {
+    width: 0.7em;
+    height: 0.7em;
+    padding: 4px;
+  }
+
+  .ActionButtons {
+    display: block;
+    padding: 0.0rem;
+  }
+
+  .ActionIconColor:last-child {
+    margin-left: 0px;
+  }
+
+ .SquareAvatar_Services {
+    height: auto;
+    width: 100%;
+    margin: 0px 0px;
+  }
+
+}
+
+.editContactInfo {
+    margin-bottom: 10px;
+    display: flex;
+  input {
+    width: 300px;
+  }
+  .MuiAutocomplete-inputRoot, .MuiFormControl-root {
+    width: 328px;
+  }
+}
+
+.buttonLink {
+  cursor: pointer;
+}
+
+.editContactInfoCity {
+  width: 328px;
+}
+

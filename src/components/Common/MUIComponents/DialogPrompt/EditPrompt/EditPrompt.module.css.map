@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,aAAa,CAAC;EACZ,MAAM,EAAE,CAAC;EACT,OAAO,EAAE,MAAM;CAChB",
+    "sources": [
+        "EditPrompt.module.scss"
+    ],
+    "names": [],
+    "file": "EditPrompt.module.css"
+}

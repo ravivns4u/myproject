@@ -1,0 +1,134 @@
+@import '../../../../../../styles/root.scss';
+.EventGrid {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.TopSection {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  padding: 1rem;
+  column-gap: 0.5rem;
+  row-gap: 1rem;
+}
+
+.TopSectionCommon {
+  height: 100%;
+  width: 100%;
+}
+.DisplayImage {
+  grid-column: 1 / span 1;
+  grid-row: 1 / span 5;
+  position: relative;
+}
+.TopSection {
+  &_text {
+    grid-column: 2 / span 1;
+    grid-row: 1/1;
+  }
+  &_currency {
+    grid-column: 3 / span 1;
+    grid-row: 1 / span 1;
+    display: flex;
+    flex-direction: row;
+    //align-items: center;
+    gap: 0.25rem;
+  }
+
+  &_startdate {
+    grid-column: 2 / span 1;
+    grid-row: 2 / span 1;
+  }
+  &_enddate {
+    grid-column: 3 / span 1;
+    grid-row: 2 / span 1;
+  }
+  &_city {
+    grid-column: 2 / span 1;
+    grid-row: 3 / span 1;
+  }
+  &_state {
+    grid-column: 3 / span 1;
+    grid-row: 3 / span 1;
+  }
+  &_category {
+    grid-column: 2 / span 1;
+    grid-row: 4 / span 1;
+  }
+  &_subCategory {
+    grid-column: 3 / span 1;
+    grid-row: 4 / span 1;
+  }
+  &_venue {
+    grid-column: 2 / span 1;
+    grid-row: 5 / span 1;
+  }
+  &_maxCapacity {
+    grid-column: 3 / span 1;
+    grid-row: 5 / span 1;
+  }
+}
+
+.currencyLabel {
+  flex: 2;
+}
+
+.currencyValue {
+  flex: 11;
+}
+
+.AboutSection {
+  width: 100%;
+}
+.HostDetailsLabel {
+  margin-top: 1rem;
+}
+.UploadContainer {
+  height: 100%;
+  width: 100%;
+  border: 2px dotted $dark-grey-v2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.UploadIcon {
+  color: $dark-grey-v2;
+  font-size: $font-size-xxlarge;
+  &_Text {
+    color: $dark-grey;
+  }
+}
+.UploadIcon_warning {
+  color: $error-red;
+  font-size: $font-size-xxlarge;
+}
+.UploadIcon_Text_warning {
+  color: $error-red;
+}
+
+@media screen and (max-width: 767px) { 
+   
+  .TopSection {
+    display: block;
+    padding: 0px;
+
+  }
+
+  .DisplayImage {
+    margin-bottom: 20px;
+  }
+
+  .TopSectionCommon {
+    margin-bottom: 20px;
+    width: 100%;
+  }
+
+}

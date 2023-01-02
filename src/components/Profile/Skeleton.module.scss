@@ -1,0 +1,45 @@
+@import '../../styles/global/variables';
+.DrawerLayout {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  overflow: hidden; 
+  margin-top: 75px;
+  height: calc(100vh - 75px);
+  border-top: 1px solid #eee;
+}
+
+.SideDrawer {
+  flex: 1;
+  background: #fff;
+  box-shadow: 5px 5px 24px 5px #1818180f;
+
+}
+
+.Body {
+  flex: 4;
+}
+
+@media screen and (max-width: 991px) {
+   
+   .DrawerLayout {
+     overflow: auto;
+     flex-wrap: wrap;
+     margin-top: 57px;
+     display: block;
+   }
+
+   .Skeleton_Body {
+     flex: inherit;
+     width: 100%;
+   }
+
+   .SideDrawer {
+    background: #fff;
+    box-shadow: none;
+    border-bottom: none;
+    padding-bottom: 10px;
+   }
+
+ }

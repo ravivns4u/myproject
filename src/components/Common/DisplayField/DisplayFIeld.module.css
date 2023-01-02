@@ -1,0 +1,23 @@
+.DisplayBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 0.25rem;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  width: 100%;
+}
+
+.DisplayLabel {
+  font-weight: bold;
+  text-align: left;
+}
+
+.DisplayValue {
+  font-weight: 400;
+}
+/*# sourceMappingURL=DisplayFIeld.module.css.map */
