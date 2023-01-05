@@ -1,0 +1,413 @@
+import * as React from 'react';
+import AppBar from '@mui/material/AppBar';
+
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import Menu from '@mui/material/Menu';
+import Container from '@mui/material/Container';
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import MenuItem from '@mui/material/MenuItem';
+import classes from './MUIFeedHeader.module.scss';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import Box from '@mui/material/Box';
+import Badge from '@mui/material/Badge';
+import Client from '../../../../firebase/firebase_client_exports';
+import { styled, alpha } from '@mui/material/styles';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import WorkIcon from '@mui/icons-material/Work';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import { useRouter } from 'next/router';
+import LogoutIcon from '@mui/icons-material/Logout';
+import { useAppSelector, useAppDispatch } from '../../../../redux/app/hooks';
+import { resetUserState } from '../../../../redux/slices/user';
+import { AccountCircle } from '@mui/icons-material';
+import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
+import HomeIcon from '@mui/icons-material/Home';
+import EventIcon from '@mui/icons-material/Event';
+import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
+import HomeRepairServiceIcon from '@mui/icons-material/HomeRepairService';
+import Link from 'next/link';
+import CustomerLoginPopup from '../../../Customer/Skeleton';
+import Image from 'next/image';
+import ConfirmationNumberIcon from '@mui/icons-material/ConfirmationNumber';
+
+
+
+const returnPathTemplate = (userSlug: string, injector: string) =>
+  `/merchants/${userSlug}${injector}`;
+
+  
+
+const pages = [
+  {
+    header: 'Company',
+    component: WorkIcon,
+    href: '/signup/merchants/company',
+  },
+  {
+    header: 'Individuals',
+    component: AccountCircleIcon,
+    href: '/signup/merchants/individuals',
+  },
+];
+
+const isUserLoggedIn = false;
+
+const navbarsPages = [
+  {
+    header: 'For Professionals',
+    component: WorkIcon,
+    href: '/login/merchants',
+    endIcon: ArrowDropDownIcon,
+  },
+  {
+    header: 'For Customers',
+    component: AccountCircleIcon,
+    href: '/login/customers',
+    promptFunctionality: true,
+  },
+];
+
+const feedPageNavigation = [
+  {
+    header: 'Home',
+    component: HomeIcon,
+    href: (userSlug: string): string =>
+      returnPathTemplate(userSlug, '/portfolio/images'),
+    comparitor: 'portfolio',
+  },
+  {
+    header: 'Services',
+    component: HomeRepairServiceIcon,
+    href: (userSlug: string): string =>
+      returnPathTemplate(userSlug, '/services/verified'),
+    comparitor: 'services',
+  },
+  {
+    header: 'Events',
+    component: EventIcon,
+    href: (userSlug: string): string =>
+      returnPathTemplate(userSlug, '/events/verified'),
+    comparitor: 'events',
+  },
+  {
+    header: 'Products',
+    component: ShoppingBagIcon,
+    href: (userSlug: string): string =>
+      returnPathTemplate(userSlug, '/products/verified'),
+    comparitor: 'products',
+  },
+  {
+    header: 'Order Requests',
+    component: ConfirmationNumberIcon,
+    href: (userSlug: string): string =>
+      returnPathTemplate(userSlug, '/order-requests/events'),
+    comparitor: 'order-requests',
+  },
+];
+
+const ResponsiveAppBar = () => {
+  const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [customerLogin, setCustomerLogin] = React.useState(false);
+  const dispatch = useAppDispatch();
+  const {
+    isLoggedIn,
+    user: { slug },
+  } = useAppSelector((state) => state.user);
+
+  const router = useRouter();
+
+  const isUserNavMenuOpen = Boolean(anchorElNav);
+  const activeElement = router.query?.merchantSlug?.[1] ?? 'updates';
+
+  const [showSidebar, setShowSidebar] = React.useState(false);
+  function toggleSidebar(){
+    setShowSidebar(!showSidebar);
+  }
+
+  const [isActive, setActive] = React.useState(false);
+  const handleToggle = () => {
+    setActive(!isActive);
+  };
+
+  const [isActiveMore, setActiveMore] = React.useState(false);
+  const handleToggleHder = () => {
+    setActiveMore(!isActiveMore);
+  };
+
+  const handleOpenNavMenu = (event: any) => {
+    setAnchorElNav(event.currentTarget);
+  };
+
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
+
+  const mobileMenuId = 'primary-search-account-menu';
+
+
+  
+  const renderNavMenu = !isUserLoggedIn ? (
+    <Menu
+      anchorEl={anchorElNav}
+      anchorOrigin={{
+        vertical: 'top',
+        horizontal: 'left',
+      }}
+      id={mobileMenuId}
+      keepMounted
+      transformOrigin={{
+        vertical: 'top',
+        horizontal: 'left',
+      }}
+      open={isUserNavMenuOpen}
+      onClose={handleCloseNavMenu}>
+      {pages.map((element, index) => {
+        const { header } = element;
+        const Component = element.component;
+        return (
+          <MenuItem
+            key={index}
+            onClick={() => {
+              router.push(element.href);
+              handleCloseNavMenu();
+            }}
+            className={
+              element.href === router.pathname
+                ? classes.ActiveRouteClassNavBar
+                : classes.InactiveRouteClassNavBar
+            }>
+            <IconButton
+              size='large'
+              aria-label='show 4 new mails'
+              color='inherit'>
+              <Component />
+            </IconButton>
+            <p>{header}</p>
+          </MenuItem>
+        );
+      })}
+    </Menu>
+  ) : (
+    <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+      <IconButton
+        size='large'
+        aria-label='show 17 new notifications'
+        color='inherit'>
+        <Badge badgeContent={17} color='error'>
+          <NotificationsIcon />
+        </Badge>
+      </IconButton>
+      <IconButton
+        size='large'
+        edge='end'
+        aria-label='account of current user'
+        aria-haspopup='true'
+        color='inherit'>
+        <AccountCircleIcon />
+      </IconButton>
+    </Box>
+  );
+
+  
+  const [scroll, setScroll] = React.useState(false);
+  React.useEffect(() => {
+  window.addEventListener("scroll", () => {
+  setScroll(window.scrollY > 50);
+  });
+  }, []); 
+
+
+	// Sticky Menu Area
+        React.useEffect(() => {
+            window.addEventListener('scroll', isSticky);
+            return () => {
+                window.removeEventListener('scroll', isSticky);
+            };
+        });
+    
+               
+        /* Method that will fix header after a specific scrollable */
+               const isSticky = (e) => {
+                    const header = document.querySelector('.headermain');
+                    const scrollTop = window.scrollY;
+                    scrollTop >= 250 ? header.classList.add('is-sticky') : header.classList.remove('is-sticky');
+                };
+  
+  
+
+  return (
+    <React.Fragment> 
+      <AppBar className="hrheader headermain">
+        <Container maxWidth={false}>
+          <Toolbar disableGutters className="HdrSwnvr">
+            <Avatar className='Hdrlogo lightlogo'
+              variant={'rounded'}
+              src={'/logo-light.png'}
+              alt='break-free logo'
+              onClick={() => router.push('/merchants/feed/updates')}
+            />
+			<Avatar className='Hdrlogo'
+              variant={'rounded'}
+              src={'/logo-darknew.png'}
+              alt='break-free logo'
+              onClick={() => router.push('/merchants/feed/updates')}
+            />
+
+            {!isLoggedIn ? (
+              <div className={classes.RightSide}>
+                  <div className={`HdrLeftbtn ${isActiveMore ? "HdrTgleSwn" : ""}`}> 
+                  <div className="Clsemhdr" onClick={handleToggleHder}> <img src="/feedPage/cancel.png" alt=''></img> </div>
+                    <ul>
+						<li>
+							<Link href="/aboutus" >
+								<a onClick={handleToggleHder}>About Us</a>
+							</Link>
+						</li>
+						<li>
+							<Link href="/resources" >
+								<a onClick={handleToggleHder}>Resources</a>
+							</Link>
+						</li>
+                    </ul>
+                  </div>
+                  <div className="BtnTgleHdr" onClick={handleToggleHder}><span></span><span></span><span></span></div>
+                {navbarsPages.map((page, index) => {
+                  const Icon = page.component;
+                  const EndIcon = page.endIcon;
+                  const routerHref = router.pathname.split('/');
+                  const assocHref = page.href.split('/');
+                  const stillTrue = routerHref[2] === assocHref[2];
+                  return (
+                   <div key={index} className='PdrRgtIcon'>   
+                    <Button
+                      // key={index}
+                      className={
+                        stillTrue
+                          ? classes.ActiveRouteClass
+                          : classes.GenericClass
+                      }
+                      onClick={(e) => {
+                        if (page.promptFunctionality) {
+                          setCustomerLogin(true);
+                          return;
+                        }
+                        if (!EndIcon) router.push(page.href);
+                        else handleOpenNavMenu(e);
+                      }}
+                      sx={{
+                        color: 'black',
+                        marginRight: 1,
+                      }}
+                      startIcon={<Icon />}
+                      endIcon={EndIcon ? <EndIcon /> : null}>
+                      {page.header}
+                    </Button>
+                    
+                    </div>
+                  );
+                })}
+                {renderNavMenu}
+              </div>
+            ) : (
+              <div className={classes.Center}>
+                <div className='Srchbox'>
+                    <input type="text" placeholder='Search'></input>
+                    <a href='#'> <img src='/feedPage/search.png'></img> </a>
+                </div>
+
+
+                <Box className={`Mobfixmncr ${isActive ? "HdrShem" : ""}`}
+                  sx={{
+                    display: { xs: 'none', md: 'flex' }, 
+                    marginLeft: '1rem',
+                  }}>
+                  {feedPageNavigation.map((element) => {
+                    const Component = element.component;
+                    const isActive = activeElement === element.comparitor;
+                    return ( 
+                      <IconButton
+                        key={element.comparitor}
+                        onClick={() => router.push(element.href(slug))}
+                        size='large'
+                        color='inherit'>
+                        <div
+                          className={classes.headerIcons}
+                          style={{ color: isActive ? 'yellow' : '#6F6F6F'}}>
+                          {<Component />}
+                          {element.header}
+                        </div>
+                      </IconButton>
+                    );
+                  })}
+                  <div className='Clsem' onClick={handleToggle}> <img src='/feedPage/cancel.png'></img> </div>
+                </Box>
+                <Box className={classes.accountsCircle}>
+                  <div className='Notification'>
+                <svg width="20" height="22" viewBox="0 0 23 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M20.6123 19.5312H2.38731C1.71231 19.5312 1.12169 19.2187 0.784188 18.6719C0.446688 18.125 0.531063 17.5 0.868563 16.9531L1.79669 15.625C3.31544 13.5156 4.07481 11.0938 4.07481 8.59375C4.07481 5.70312 6.09981 3.04688 9.05294 2.10938C9.55919 1.25 10.4873 0.78125 11.4998 0.78125C12.5123 0.78125 13.4404 1.25 13.9467 2.10938C16.8998 3.04688 18.9248 5.70312 18.9248 8.59375C18.9248 11.0938 19.6842 13.5156 21.2029 15.625L22.1311 16.9531C22.4686 17.5 22.5529 18.125 22.2154 18.6719C21.9623 19.2187 21.2873 19.5312 20.6123 19.5312Z" fill="#fff"/>
+                  <path d="M7.36523 21.0938C7.78711 22.8906 9.47461 24.2188 11.4996 24.2188C13.5246 24.2188 15.2121 22.8906 15.634 21.0938H7.36523Z" fill="#fff"/>
+                </svg> 
+                <span className='BxCmvr'>20</span>
+                </div>
+
+                  <div className={classes.feedCart}>
+                  <svg width="20" height="17" viewBox="0 0 25 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M24.71 5.05078C24.591 4.91249 24.4388 4.80147 24.2652 4.72645C24.0917 4.65142 23.9017 4.61443 23.71 4.61838L6.4 4.59998L5.63 1.77558C5.55933 1.53006 5.40229 1.31296 5.1834 1.15819C4.96451 1.00341 4.69608 0.919648 4.42 0.919984H0V1.83998H4.42C4.47409 1.83998 4.52673 1.85612 4.57 1.88598C4.61327 1.91584 4.64485 1.95781 4.66 2.00558L8.37 15.7044C8.44067 15.9499 8.59771 16.167 8.8166 16.3218C9.03549 16.4766 9.30392 16.5603 9.58 16.56H21.58C21.8683 16.5625 22.1484 16.4718 22.3714 16.3036C22.5944 16.1355 22.7461 15.9006 22.8 15.64L25 6.02598C25.0364 5.85386 25.0291 5.67634 24.9788 5.50721C24.9285 5.33808 24.8365 5.1819 24.71 5.05078ZM13 19.32C13 19.6839 12.8827 20.0396 12.6629 20.3422C12.4432 20.6448 12.1308 20.8807 11.7654 21.0199C11.3999 21.1592 10.9978 21.1956 10.6098 21.1246C10.2219 21.0536 9.86549 20.8784 9.58579 20.6211C9.30608 20.3637 9.1156 20.0359 9.03843 19.679C8.96126 19.322 9.00087 18.9521 9.15224 18.6158C9.30362 18.2796 9.55996 17.9923 9.88886 17.7901C10.2178 17.5879 10.6044 17.48 11 17.48C11.5304 17.48 12.0391 17.6738 12.4142 18.0189C12.7893 18.364 13 18.832 13 19.32ZM22 19.32C22 19.6839 21.8827 20.0396 21.6629 20.3422C21.4432 20.6448 21.1308 20.8807 20.7654 21.0199C20.3999 21.1592 19.9978 21.1956 19.6098 21.1246C19.2219 21.0536 18.8655 20.8784 18.5858 20.6211C18.3061 20.3637 18.1156 20.0359 18.0384 19.679C17.9613 19.322 18.0009 18.9521 18.1522 18.6158C18.3036 18.2796 18.56 17.9923 18.8889 17.7901C19.2178 17.5879 19.6044 17.48 20 17.48C20.5304 17.48 21.0391 17.6738 21.4142 18.0189C21.7893 18.364 22 18.832 22 19.32Z" fill="#fff"/>
+</svg>
+<span className='CrtMnvSwn'>2</span>
+
+       </div>
+       <div className={classes.LngoutMnvr}> 
+                <div className={classes.ImgLngotm} onClick={toggleSidebar}>
+                   <img src='/feedPage/avatarJonDoe.png'/>
+                   <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0.75 0.166687L7 7.25002L13.25 0.166687H0.75Z" fill="#fff"/>
+                    </svg>
+                </div>
+                <div className='Drpdwnlngout' style={{
+        visibility: showSidebar?"visible":"hidden",
+        opacity: showSidebar?"1":"0",
+        margin: showSidebar?"0px 0px 0px 0px":"0px 0px 0px -270px",
+        // display: showSidebar?"block":"none"
+      }}>
+                    <ul>
+                      <li> <a href='javascript:void(0);' className='logOut' onClick={() => {
+                  Client.auth.signOut();
+                  dispatch(resetUserState());
+                  // router.push('/login/merchants/individuals');
+                }}> Logout </a> </li>
+                    </ul>
+
+                </div> 
+
+              </div> 
+              <div className='BtnPrvemvrTgle' onClick={handleToggle}>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                </Box>
+
+              </div>
+            )}
+            {isLoggedIn ? (
+              <LogoutIcon 
+                className={classes.LogoutIcon}
+                
+              />
+              
+
+            ) : null}
+          </Toolbar>
+        </Container>
+      </AppBar>
+      <CustomerLoginPopup
+        open={customerLogin}
+        handleOpening={setCustomerLogin}
+      />
+    </React.Fragment>
+  );
+};
+export default ResponsiveAppBar;

@@ -9,12 +9,11 @@ import classes from "../common.module.scss";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { DeletePointer } from "../../../../../redux/interfaces/backend/apis/deleteInterfaces";
-import { ImageFeedData } from "../../../../../redux/interfaces/backend/apis/ImageFeed";
+import { ImageCmsData } from "../../../../../redux/interfaces/backend/apis/ImageFeed";
 import Avatar from "@mui/material/Avatar";
 import { DeleteDataTypes } from "../../Body";
 import { EditDataForm } from "../../../../../redux/interfaces/backend/apis";
 import { comparitors } from "../constants/comparitors";
-import CmsComponent from './SubModules/Cms';
 
 export async function getStaticProps() {
   return { props: { isDark: true } };
@@ -57,7 +56,7 @@ const feedColumns: GridColumns = [
         deleteOperationType: comparitors.IMAGES,
         isService: false,
       };
-      const imageData: ImageFeedData = {
+      const imageData: ImageCmsData = {
         fileName: row.fileName,
         fullPath: row.fullPath,
         textContent: row.description,
@@ -126,7 +125,7 @@ export default function ImageFeed(props: ImageProps) {
     user: { firebaseToken, isLoggedIn },
     profile: {
       fetched,
-      cms: { images },
+      feeds: { images },
     },
   } = useAppSelector((state) => state);
 

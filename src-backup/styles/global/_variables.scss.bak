@@ -1,0 +1,36 @@
+$header-color: #000;
+$font-family: 'Roboto', sans-serif;
+
+// Theme Colors:
+$primary-dark: #000;
+$primary-white: #fff;
+$font-size-normal: 3rem;
+
+//Yellow Theme
+$dark-yellow: #e79f4a;
+$light-yellow: #e9db1c;
+$theme-yellow: #ffff00;
+$button-light-yellow: #efc753;
+$success-green: #45aa2b;
+$error-red: #ff0000;
+$slightly-grey: #ccc;
+$light-grey: #ecedee;
+$light-grey-v2: #ececee;
+$light-grey-v3: #f5f6f6;
+$light-grey-v4: #dfdfe1;
+$button-grey: #dcdcdc;
+$dark-grey: #848484;
+$dark-grey-v2: #d6d7d8;
+$approval-green: rgb(24, 218, 24);
+$focus-blue: #03a9f4;
+
+//Font Sizes
+$font-size-small: 1rem;
+$font-size-normal: 1.2rem;
+$font-size-large: 1.4rem;
+$font-size-xlarge: 1.6rem;
+$font-size-xxlarge: 3rem;
+
+//Image Sizes
+$avatar-portfolio: 8rem;
+$avatar-portfolio-font-size: 3rem;

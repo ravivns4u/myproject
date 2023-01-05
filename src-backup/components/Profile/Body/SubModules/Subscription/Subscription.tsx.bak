@@ -1,0 +1,352 @@
+import React from "react";
+import NavHead, { INavHeaderProps } from "../Common/NavHead/NavHead";
+import { IDataTableStatic } from "../Common/DataTable/DataTable";
+
+import { useRouter } from "next/router";
+import { comparitors } from "../constants/comparitors";
+
+import Grid from '@mui/material/Grid';
+import { useAppSelector, useAppDispatch } from "../../../../../redux/app/hooks";
+import moment from "moment";
+import { updateLoading } from "../../../../../redux/slices/signup";
+import { updateNotification } from "../../../../../redux/slices/notifications";
+import { getUserDetails } from "../../../../../redux/slices/user";
+import { ExpectedUpdaeUserPayload } from "../../../../../redux/interfaces/backend/apis/UpdateUser";
+
+export interface ServiceProps {
+  navbarProps: INavHeaderProps;
+  externalDataTable: IDataTableStatic;
+  handleClose?: () => void;
+  open: boolean;
+}
+
+export async function getStaticProps() {
+  return { props: { isDark: true } };
+}
+
+
+
+export default function SubscriptionSection(props: ServiceProps) {
+  const { navbarProps, externalDataTable } = props;
+  const router = useRouter();
+  const dispatch = useAppDispatch();
+  const pageSection = router.query.merchantSlug?.[2] ?? comparitors.EVENTS;
+  const {
+    user: { user, firebaseToken },
+    // user: { firebaseToken },
+    profile,
+  } = useAppSelector((state) => state);
+
+  let Component = <div>No Such Component Found</div>;
+  switch (pageSection) {
+    default: {
+    }
+  }
+  
+  
+  
+
+  const makePayment = async () => {
+    const res = await initializeRazorpay();
+
+    if (!res) {
+      alert("Razorpay SDK Failed to load");
+      return;
+    }
+
+    // Make API call to the serverless API
+    const data = await fetch("/api/merchant/razorpay", { method: "POST" }).then(
+      (t) => t.json()
+    );
+    var options = {
+      key: process.env.RAZORPAY_KEY, // Enter the Key ID generated from the Dashboard
+      name: "SS BREAK FREE LLP",
+      currency: data.currency,
+      amount: data.amount,
+      order_id: data.id,
+      description: "Thanks for choosing breakfree subscription",
+      // image: "https://breakfree.vercel.app/logo-dark.png",
+
+      handler: function (response) {
+        // Validate payment at server - using webhooks is a better idea.
+        // alert(date.addMonths(3));
+        const body: ExpectedUpdaeUserPayload = {
+          firebaseToken: firebaseToken,
+          updatedUserData: {
+            ...user,
+            razorpay_order_id: response.razorpay_order_id,
+            razorpay_payment_id : response.razorpay_payment_id,
+            razorpay_signature: response.razorpay_signature,
+            subscription: true,
+			plan: 'pro',
+            subscriptionStartDate: new Date().toISOString(),
+            subscriptionEndDate: moment().add(4, "months").toISOString(),
+          },
+        };
+
+        fetch("/api/update-user-info", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(body),
+        })
+          .then((data) => data.json())
+          .then((data) => {
+            if (data.error) {
+              dispatch(updateLoading({ loading: false }));
+              dispatch(
+                updateNotification({
+                  status: "error",
+                  message: "Update Operation Failed!",
+                  title: "Error",
+                  show: true,
+                })
+              );
+            } else {
+              dispatch(updateLoading({ loading: false }));
+              // closeModal && closeModal();
+              dispatch(
+                updateNotification({
+                  message: "Subscription Started Successfully",
+                  show: true,
+                  status: "success",
+                  title: "Success",
+                })
+              );
+              dispatch(getUserDetails({ firebaseToken: firebaseToken }));
+            }
+          })
+          .catch((error) => {
+            dispatch(updateLoading({ loading: false }));
+            dispatch(
+              updateNotification({
+                status: "error",
+                message: "Update Operation Failed!",
+                title: "Error",
+              })
+            );
+          });
+       
+      },
+      prefill: {
+        name: user.displayName,
+        email: user.email,
+        contact: user.phone,
+      },
+    };
+
+    const paymentObject = new window.Razorpay(options);
+    paymentObject.open();
+  };
+
+  const initializeRazorpay = () => {
+    return new Promise((resolve) => {
+      const script = document.createElement("script");
+      script.src = "https://checkout.razorpay.com/v1/checkout.js";
+      // document.body.appendChild(script);
+
+      script.onload = () => {
+        resolve(true);
+      };
+      script.onerror = () => {
+        resolve(false);
+      };
+
+      document.body.appendChild(script);
+    });
+  };
+  
+  
+  
+  
+  
+  
+  
+  const makePayment1  = async () => {
+  
+  
+  
+	const orderid = (new Date()).getTime();
+	
+	
+	const body: ExpectedUpdaeUserPayload = {
+          firebaseToken: firebaseToken,
+          updatedUserData: {
+            ...user,
+            subscription: true,
+			plan: 'basic',
+            subscriptionStartDate: new Date().toISOString(),
+            subscriptionEndDate: moment().add(1, "month").toISOString(),
+          },
+        };
+		
+	
+		
+	fetch("/api/update-user-info", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(body),
+        })
+          .then((data) => data.json())
+          .then((data) => {
+            if (data.error) {
+              dispatch(updateLoading({ loading: false }));
+              dispatch(
+                updateNotification({
+                  status: "error",
+                  message: "Update Operation Failed!",
+                  title: "Error",
+                  show: true,
+                })
+              );
+            } else {
+              dispatch(updateLoading({ loading: false }));
+              // closeModal && closeModal();
+              dispatch(
+                updateNotification({
+                  message: "Subscription Started Successfully",
+                  show: true,
+                  status: "success",
+                  title: "Success",
+                })
+              );
+              dispatch(getUserDetails({ firebaseToken: firebaseToken }));
+            }
+          })
+          .catch((error) => {
+            dispatch(updateLoading({ loading: false }));
+            dispatch(
+              updateNotification({
+                status: "error",
+                message: "Update Operation Failed!",
+                title: "Error",
+              })
+            );
+          });
+	
+    
+
+    
+  };
+
+  
+  
+	
+  
+	let probutton;
+	if (user.plan && user.plan == 'pro' && user.subscription && user.subscriptionEndDate && moment(user?.subscriptionEndDate) >= moment(new Date().toISOString()))
+	{
+		probutton = <button type="button" className="btn btn-primary1">Current Plan</button>;
+    }
+	else if (user.plan && user.plan == 'basic' && user.subscription && user.subscriptionEndDate && moment(user?.subscriptionEndDate) >= moment(new Date().toISOString()))
+	{
+		probutton = <button type="button" className="btn btn-primary" onClick={makePayment}>Upgrade</button>;
+    }
+	else
+	{
+		probutton = <button type="button" className="btn btn-primary" onClick={makePayment}>Subscribe</button>;
+    }
+	
+	
+	
+	let basicbutton;
+	if (user.plan && user.plan == 'basic' && user.subscription && user.subscriptionEndDate && moment(user?.subscriptionEndDate) >= moment(new Date().toISOString()))
+	{
+		basicbutton = <button type="button" className="btn btn-primary1">Current Plan</button>;
+    }
+	else if (user.plan && user.plan == 'pro' && user.subscription && user.subscriptionEndDate && moment(user?.subscriptionEndDate) >= moment(new Date().toISOString()))
+	{
+		basicbutton = <button type="button" className="btn btn-primary" onClick={makePayment1}>Upgrade</button>;
+    }
+	else
+	{
+		basicbutton = <button type="button" className="btn btn-primary" onClick={makePayment1}>Subscribe</button>;
+    }
+	
+  
+  
+  
+  
+  
+  
+  
+
+  return (
+    <React.Fragment>
+      <NavHead {...navbarProps} />
+      
+	  
+		<div className="pricingsection">
+	  
+		<Grid container spacing={{ xs: 2, md: 8 }} className="pricing-row" direction="row" justifyContent="center" alignItems="center">
+			<Grid item md={6} className="pricing-col">
+				<div className="pricing pricing-4 starter">
+                    <div className="bg-element"></div>
+                    <p className="pricing-title">BASIC</p>
+                    <div className="price">
+                        <div className="currency">Rs.</div>
+                        <div className="num">0</div>
+                        <div className="period">/month</div>
+                    </div>
+
+                    <ul className="specs">
+                        <li>
+                            Create Profile with one role
+                        </li>
+                        <li>
+                            Upload Only one portfolio
+                        </li>
+                        <li>
+                            Only one project at a time
+                        </li>
+                        <li>
+                            <span className="font-weight-bold">6 Months</span> of Support
+                        </li>
+                    </ul>
+                    <div className="circle4">B</div>
+					{ basicbutton }
+                </div>
+			</Grid>
+			<Grid item md={6} className="pricing-col">
+				<div className="pricing pricing-4 premium">
+                    <div className="bg-element"></div>
+                    <p className="pricing-title">PRO</p>
+                    <div className="price">
+                        <div className="currency">Rs.</div>
+                        <div className="num">1770</div>
+                        <div className="period">/ 3 month</div>
+                    </div>
+
+                    <ul className="specs">
+                        <li>
+                            Create Profile with multiple roles
+                        </li>
+                        <li>
+                            Upload Multiple portfolios and designs
+                        </li>
+                        <li>
+                            Multiple Projects
+                        </li>
+                        <li>
+                            <span className="font-weight-bold">6 Months</span> of Support
+                        </li>
+                    </ul>
+                    <div className="circle4">P</div>
+					{ probutton }
+                    
+                </div>
+			</Grid>
+		</Grid>
+	  
+		</div>
+	  
+        
+      
+
+      {/* {Component} */}
+    </React.Fragment>
+  );
+}

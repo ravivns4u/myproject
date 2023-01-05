@@ -1,0 +1,52 @@
+@import '../../LoginForm/Login.module.scss';
+
+.LoginColumnGrid {
+  display: grid;
+  overflow: hidden;
+  grid-template-columns: 2fr 1fr 1fr;
+  padding: 10px;
+
+  @include respond(media-less-than-320) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond(media-less-than-320) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  @include respond(media-320-480) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  @include respond(media-480-600) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  @include respond(media-600-768) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  @include respond(media-768-900) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include respond(media-900-1024) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.ButtonUtility {
+  align-self: flex-end;
+  margin: 1rem 0;
+      width: 100%;
+    max-width: 200px;font-family: 'Poppins';
+    font-size: 16px;
+    font-weight: 600;padding: 10px 20px;
+  @include respond(media-less-than-320) {
+    align-self: center;
+  }
+  @include respond(media-320-480) {
+    align-self: center;
+  }
+  @include respond(media-480-600) {
+    align-self: center;
+  }
+  @include respond(media-600-768) {
+    align-self: center;
+  }
+}

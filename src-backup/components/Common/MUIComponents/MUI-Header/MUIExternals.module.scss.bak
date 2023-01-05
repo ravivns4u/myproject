@@ -1,0 +1,134 @@
+@import '../../../../styles/root.scss';
+.SearchNavWrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.AlignCenter {
+  display: flex;
+  align-items: center;
+}
+
+.RightSide {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.Center {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  width: 100%;
+}
+
+.ActiveRouteClass {
+  color: $dark-yellow;
+  border-bottom: 2px solid $light-yellow;
+  background-color: $primary-white;
+
+  border-radius: 0rem;
+}
+.GenericClass {
+  background-color: $primary-white;
+  &:hover {
+    color: $primary-white;
+  }
+}
+
+.GenericClass {
+  background-color: $primary-white;
+  &:hover {
+    color: $primary-white;
+    background-color: #000;
+  }
+}
+
+.ActiveRouteClassNavBar {
+  background-color: $dark-yellow;
+  color: $primary-white;
+}
+.InactiveRouteClassNavBar {
+  color: $primary-dark;
+}
+
+.SwapScreenMargin {
+  @include respond(media-less-than-320) {
+    margin-bottom: 2rem;
+  }
+  @include respond(media-320-480) {
+    margin-bottom: 2rem;
+  }
+  @include respond(media-480-600) {
+    margin-bottom: 2rem;
+  }
+  @include respond(media-600-768) {
+    margin-bottom: 2rem;
+  }
+}
+
+.LogoutIcon {
+  color: $primary-dark;
+  padding: 0.25rem;
+  font-size: 2rem;
+  cursor: pointer;
+  display: none;
+  margin-left: 1rem;
+}
+
+.LogoutIcon path {
+  color: #FFFF00;
+}
+
+@include respond(media-600-768) {
+  .InactiveRouteClassNavBar {
+     padding: 8px;
+  }
+
+  .InactiveRouteClassNavBar button {
+    padding: 5px;
+  }
+
+  .InactiveRouteClassNavBar p {
+    margin: 0px 0px;
+  }
+}
+
+@media screen and (max-width: 767px) { 
+  
+  
+  .RightSide {
+    position: absolute;
+    right: 0px;
+    top: 9px;
+  }
+  .ActiveRouteClass {
+      font-size: 11px;
+      white-space: nowrap;
+      margin-right: 4px;
+      padding: 2px;
+  }
+
+  .ActiveRouteClass span {
+    margin-left: 0px;
+    margin-right: 5px;
+  }
+
+  .ActiveRouteClass span svg {
+    font-size: 12px;
+    display: none;
+  }
+
+  .GenericClass {
+    padding: 0px;
+    font-size: 11px;
+    svg {
+      display: none;
+    }
+  }
+
+ 
+}
+

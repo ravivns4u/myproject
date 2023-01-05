@@ -1,0 +1,104 @@
+@import '../../../styles/root.scss';
+
+.SideBarContainer {
+  width: 100%;
+  height: 100%;
+  padding: 0px 0px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  font-family: $font-family;
+  text-align: center;
+}
+
+.CircularAvatar {
+  height: 4rem;
+  width: 4rem;
+  font-size: $avatar-portfolio-font-size;
+  aspect-ratio: 1/1;
+  margin: 0 auto;
+}
+
+.NameHeader {
+  text-transform: capitalize;
+  font-size: 18px;
+  font-weight: 500;
+  color: #000;
+  margin: 0;
+  margin-top: 5px;
+}
+
+.Profession {
+  font-size: 12px;
+  color: #000;
+  margin: 0;
+  padding: 0;
+}
+
+.EditButton span {
+  margin-left: 0px;
+  margin-right: 4px;
+}
+
+.EditButton span svg {
+  font-size: 10px !important;
+}
+
+.EditButton {
+  margin: 0.5rem auto;
+  //background-color: #000;
+  background-color: #D9D9D9;
+  min-width: auto;
+  color: #000;
+  box-shadow: none;
+  padding: 7px 10px;
+  line-height: 1;
+  font-size: 11px;
+  position: absolute;
+  top: 0px;
+  right: 17px;
+  text-transform: capitalize;
+  padding-right: 9px;
+  &:hover {
+    background-color: $primary-white;
+    color: $primary-dark;
+  }
+}
+.Bio {
+  font-size: $font-size-small * 0.85;
+  color: $primary-dark;
+  margin: 0.75rem auto;
+  padding: 0 0.4rem;
+  font-weight: 300;
+  justify-content: space-around;
+}
+
+.ButtonSpecs {
+  width: 84%;
+  display:flex;
+  text-transform: capitalize;
+  font-size: 17px;
+  //background-color: #eeeeee;
+  //text-align: left;
+  //justify-content: center;
+  //padding: 5px 22px;
+  align-items: center;
+  text-align: left;
+  justify-content: left;
+  padding-left: 30px;
+  margin: 0 auto 12px;
+}
+
+@media screen and (max-width: 991px) {
+   .ButtonSpecs {
+    padding: 1px 22px;
+    font-size: 14px;
+    width: auto;
+    color: #efc753;
+    display: none;
+   }
+
+   .ButtonSpecs.ThemeButtonInActive{
+     color: #fff;
+   }
+
+ }

@@ -1,0 +1,151 @@
+import React, { ReactElement } from 'react';
+import classes from './Sidebar.module.scss';
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import EditIcon from '@mui/icons-material/Edit';
+import { useRouter } from 'next/router';
+import { useAppSelector } from '../../../redux/app/hooks';
+import moment from 'moment'
+function stringToColor(string: string) {
+  let hash = 0;
+  let i;
+
+  /* eslint-disable no-bitwise */
+  for (i = 0; i < string.length; i += 1) {
+    hash = string.charCodeAt(i) + ((hash << 5) - hash);
+  }
+
+  let color = '#';
+
+  for (i = 0; i < 3; i += 1) {
+    const value = (hash >> (i * 8)) & 0xff;
+    color += `00${value.toString(16)}`.substr(-2);
+  }
+  /* eslint-enable no-bitwise */
+
+  return color;
+}
+
+export function stringAvatar(name: string) {
+  return {
+    sx: {
+      bgcolor: stringToColor(name),
+    },
+    children: `${name.split(' ')[0][0]}${name?.split(' ')?.[1]?.[0] ?? 'G'}`,
+  };
+}
+
+const returnPathTemplate = (userSlug: string, injector: string) =>
+  `/merchants/${userSlug}${injector}`;
+
+const actionButtons = [
+  {
+    buttonTitle: 'Portfolio',
+    comparitor: 'portfolio',
+    href: (userId: string) => returnPathTemplate(userId, '/portfolio/images'),
+  },
+  {
+    buttonTitle: 'Services',
+    comparitor: 'services',
+    href: (userId: string) => returnPathTemplate(userId, '/services/verified'),
+  },
+  {
+    buttonTitle: 'Events',
+    comparitor: 'events',
+    href: (userId: string) => returnPathTemplate(userId, '/events/verified'),
+  },
+  {
+    buttonTitle: 'Products',
+    comparitor: 'products',
+    href: (userId: string) => returnPathTemplate(userId, '/products/verified'),
+  },
+  {
+    buttonTitle: 'Order Requests',
+    comparitor: 'order-requests',
+    href: (userId: string) =>
+      returnPathTemplate(userId, '/order-requests/events'),
+  },
+  {
+    buttonTitle: 'Subscription',
+    comparitor: 'subscription',
+    href: (userId: string) =>
+      returnPathTemplate(userId, '/subscription'),
+  },
+  {
+    buttonTitle: 'Admins',
+    comparitor: 'admin-dashboard',
+    href: (userId: string) =>
+      returnPathTemplate(userId, '/admin-dashboard/accounts'),
+  },
+];
+
+interface Props {
+  openEditPrompt: (value: boolean) => void;
+}
+export default function Sidebar(props: Props): ReactElement {
+  const { openEditPrompt } = props;
+  const router = useRouter();
+  const {
+    user,
+    profile: { dp },
+  } = useAppSelector((state) => state);
+
+  return (
+    <div className={[classes.SideBarContainer, 'ThinScrollbar'].join(' ')}>
+     <div className="SprteSec"> 
+      <Avatar
+        className={classes.CircularAvatar}
+        alt={user.displayName}
+        src={dp === '' ? '/portfolio/person.png' : dp}
+      />
+      <h1 className={classes.NameHeader}>{user.displayName}</h1>
+      <h3 className={classes.Profession}>
+        {user.user?.profession || 'Unknown'}
+      </h3>
+      <h3  className={classes.Profession}>
+		{user.user.plan && user.user.plan == 'pro' ? `BREAK FREE PRO` : "BREAK FREE BASIC"}
+      </h3>
+      <h3  className={classes.Profession}>
+        {user.user.subscriptionEndDate && moment(user.user?.subscriptionEndDate) >= moment(new Date().toISOString()) ? `Subscription will end : ${moment(user.user?.subscriptionEndDate).format("DD-MM-YYYY")}` : null}
+      </h3>
+      <Button
+        className={classes.EditButton}
+        variant={'contained'}
+        onClick={() => openEditPrompt(true)}
+        startIcon={<EditIcon />}>
+        Edit
+      </Button>
+      </div>
+      <h4 className={classes.Bio}>
+        {user.user?.bio?.slice(0, 150) ?? "I'm a professional musician"}
+      </h4>
+      {actionButtons.map((button, index) => {
+        const merchantSlug = router.query.merchantSlug as string[];
+        let passParam = '/';
+        let identifierParam = '/';
+        if (!user.isAdmin && index === actionButtons.length - 1) {
+          return null;
+        }
+        if (merchantSlug) {
+          if (merchantSlug.length > 1) {
+            passParam = merchantSlug[1];
+          }
+          identifierParam = merchantSlug[0];
+        }
+        return (
+          <Button
+            key={button.buttonTitle}
+            onClick={() => router.push(button.href(identifierParam as string))}
+            className={[
+              passParam === button.comparitor
+                ? 'ThemeButtonActive'
+                : 'ThemeButtonInActive',
+              classes.ButtonSpecs,
+            ].join(' ')}>
+            {button.buttonTitle}
+          </Button>
+        );
+      })}
+    </div>
+  );
+}

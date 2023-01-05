@@ -1,0 +1,34 @@
+@import '../../../styles/root.scss';
+
+.FirstHalf {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+}
+
+.CircularAvatar {
+  height: $avatar-portfolio;
+  width: $avatar-portfolio;
+  font-size: $avatar-portfolio-font-size;
+  aspect-ratio: 1/1;
+  margin: 0 auto;
+}
+.bio {
+  font-style: italic;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.SecondHalf {
+  height: 100%;
+  width: 100%;
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  overflow-y: auto;
+}

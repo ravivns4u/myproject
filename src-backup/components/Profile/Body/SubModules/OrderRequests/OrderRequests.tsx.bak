@@ -1,0 +1,217 @@
+import React from "react";
+import NavHead, { INavHeaderProps } from "../Common/NavHead/NavHead";
+import { IDataTableStatic } from "../Common/DataTable/DataTable";
+import Link from 'next/link';
+import { useRouter } from "next/router";
+import { comparitors } from "../constants/comparitors";
+import Button from '@mui/material/Button';
+import OrderRequestEvents from "./Events/OrderRequestsEvents";
+import OrderRequestService from "./Services/OrderRequestServices";
+import OrderRequestProducts from "./Products/OrderRequestProducts";
+import { useAppSelector, useAppDispatch } from "../../../../../redux/app/hooks";
+import moment from "moment";
+import { updateLoading } from "../../../../../redux/slices/signup";
+import { updateNotification } from "../../../../../redux/slices/notifications";
+import { getUserDetails } from "../../../../../redux/slices/user";
+import { ExpectedUpdaeUserPayload } from "../../../../../redux/interfaces/backend/apis/UpdateUser";
+
+export interface ServiceProps {
+  navbarProps: INavHeaderProps;
+  externalDataTable: IDataTableStatic;
+  handleClose?: () => void;
+  open: boolean;
+}
+
+export async function getStaticProps() {
+  return { props: { isDark: true } };
+}
+
+const returnPathTemplate = (userSlug: string, injector: string) =>
+  `/merchants/${userSlug}${injector}`;
+  
+  
+const actionButtons = [
+  {
+    buttonTitle: 'Subscribe Now',
+    comparitor: 'subscription',
+    href: (userId: string) =>
+      returnPathTemplate(userId, '/subscription'),
+  }
+];
+
+export default function OrderRequestSection(props: ServiceProps) {
+  const { navbarProps, externalDataTable } = props;
+  const router = useRouter();
+  const dispatch = useAppDispatch();
+  const pageSection = router.query.merchantSlug?.[2] ?? comparitors.EVENTS;
+  const {
+    user: { user, firebaseToken },
+    // user: { firebaseToken },
+    profile,
+  } = useAppSelector((state) => state);
+
+  let Component = <div>No Such Component Found</div>;
+  switch (pageSection) {
+    case comparitors.EVENTS: {
+      Component = <OrderRequestEvents {...externalDataTable} />;
+      break;
+    }
+    case comparitors.SERVICES: {
+      Component = <OrderRequestService {...externalDataTable} />;
+      break;
+    }
+    case comparitors.PRODUCTS: {
+      Component = <OrderRequestProducts {...externalDataTable} />;
+      break;
+    }
+    default: {
+    }
+  }
+
+  const makePayment = async () => {
+    const res = await initializeRazorpay();
+
+    if (!res) {
+      alert("Razorpay SDK Failed to load");
+      return;
+    }
+
+    // Make API call to the serverless API
+    const data = await fetch("/api/merchant/razorpay", { method: "POST" }).then(
+      (t) => t.json()
+    );
+    console.log(data);
+    var options = {
+      key: process.env.RAZORPAY_KEY, // Enter the Key ID generated from the Dashboard
+      name: "SS BREAK FREE LLP",
+      currency: data.currency,
+      amount: data.amount,
+      order_id: data.id,
+      description: "Thanks for choosing breakfree subscription",
+      // image: "https://breakfree.vercel.app/logo-dark.png",
+
+      handler: function (response) {
+        // Validate payment at server - using webhooks is a better idea.
+        // alert(date.addMonths(3));
+        const body: ExpectedUpdaeUserPayload = {
+          firebaseToken: firebaseToken,
+          updatedUserData: {
+            ...user,
+            razorpay_order_id: response.razorpay_order_id,
+            razorpay_payment_id : response.razorpay_payment_id,
+            razorpay_signature: response.razorpay_signature,
+            subscription: true,
+            subscriptionStartDate: new Date().toISOString(),
+            subscriptionEndDate: moment().add(4, "months").toISOString(),
+          },
+        };
+
+        fetch("/api/update-user-info", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(body),
+        })
+          .then((data) => data.json())
+          .then((data) => {
+            if (data.error) {
+              dispatch(updateLoading({ loading: false }));
+              dispatch(
+                updateNotification({
+                  status: "error",
+                  message: "Update Operation Failed!",
+                  title: "Error",
+                  show: true,
+                })
+              );
+            } else {
+              dispatch(updateLoading({ loading: false }));
+              // closeModal && closeModal();
+              dispatch(
+                updateNotification({
+                  message: "Subscription Started Successfully",
+                  show: true,
+                  status: "success",
+                  title: "Success",
+                })
+              );
+              dispatch(getUserDetails({ firebaseToken: firebaseToken }));
+            }
+          })
+          .catch((error) => {
+            console.log("Error = ", error);
+            dispatch(updateLoading({ loading: false }));
+            dispatch(
+              updateNotification({
+                status: "error",
+                message: "Update Operation Failed!",
+                title: "Error",
+              })
+            );
+          });
+      },
+      prefill: {
+        name: user.displayName,
+        email: user.email,
+        contact: user.phone,
+      },
+    };
+
+    const paymentObject = new window.Razorpay(options);
+    paymentObject.open();
+  };
+
+  const initializeRazorpay = () => {
+    return new Promise((resolve) => {
+      const script = document.createElement("script");
+      script.src = "https://checkout.razorpay.com/v1/checkout.js";
+      // document.body.appendChild(script);
+
+      script.onload = () => {
+        resolve(true);
+      };
+      script.onerror = () => {
+        resolve(false);
+      };
+
+      document.body.appendChild(script);
+    });
+  };
+
+
+  return (
+    <React.Fragment>
+      <NavHead {...navbarProps} />
+      
+        <div className="OrdrRequstSve">
+          <h1>To View order requests you have to subscribe first.</h1>
+			{actionButtons.map((button, index) => {
+			const merchantSlug = router.query.merchantSlug as string[];
+			let passParam = '/';
+			let identifierParam = '/';
+			if (!user.isAdmin && index === actionButtons.length - 1) {
+			  return null;
+			}
+			if (merchantSlug) {
+			  if (merchantSlug.length > 1) {
+				passParam = merchantSlug[1];
+			  }
+			  identifierParam = merchantSlug[0];
+			}
+			return (
+			  <Button
+				key={button.buttonTitle}
+				onClick={() => router.push(button.href(identifierParam as string))}
+				>
+				{button.buttonTitle}
+			  </Button>
+			);
+			})}
+        </div>
+      
+
+      {/* {Component} */}
+    </React.Fragment>
+  );
+}

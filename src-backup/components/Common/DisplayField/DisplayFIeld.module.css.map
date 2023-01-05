@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,WAAW,CAAC;EACV,OAAO,EAAE,IAAI;EACb,WAAW,EAAE,MAAM;EACnB,GAAG,EAAE,OAAO;EACZ,WAAW,EAAE,UAAU;EACvB,KAAK,EAAE,IAAI;CACZ;;AACD,AAAA,aAAa,CAAC;EACZ,WAAW,EAAE,IAAI;EACjB,UAAU,EAAE,IAAI;CACjB;;AACD,AAAA,aAAa,CAAC;EACZ,WAAW,EAAE,GAAG;CACjB",
+    "sources": [
+        "DisplayFIeld.module.scss"
+    ],
+    "names": [],
+    "file": "DisplayFIeld.module.css"
+}

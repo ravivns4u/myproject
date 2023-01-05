@@ -1,0 +1,305 @@
+import React, { useCallback } from "react";
+import classes from "./Modifiables.module.scss";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import { useDropzone } from "react-dropzone";
+import { getUserAndImageFeed } from "../../../../../../redux/slices/profile";
+import Image from "next/image";
+import Client from "../../../../../../firebase/firebase_client_exports";
+import { ref, uploadBytes } from "firebase/storage";
+import Spinner from "../../../../Spinner/Spinner";
+import Grid from '@mui/material/Grid';
+import {
+  useAppSelector,
+  useAppDispatch,
+} from "../../../../../../redux/app/hooks";
+import { useRouter } from "next/router";
+import { onAuthStateChanged } from "firebase/auth";
+import { getUserDetails } from "../../../../../../redux/slices/user";
+import type {
+  ReqPayload,
+  ImageFeedData,
+} from "../../../../../../redux/interfaces/backend/apis/ImageFeed";
+import { IMetaData } from "../../../../../../redux/interfaces/backend/apis";
+
+interface Props {
+  triggerChanges: () => void;
+  metadata: IMetaData;
+}
+export default function Feed(props: ImageFeedData & Props) {
+  const [description, setDescription] = React.useState(props.textContent);
+  const [error, setError] = React.useState(false);
+  const [file, setFile] = React.useState<any>({
+    preview: props.publicUri ?? props.image ?? "/loading.png",
+  });
+  const [fileName, setFileName] = React.useState(props.fileName);
+  const [fileUploaded, setFileUploaded] = React.useState(true);
+  const [loading, setLoading] = React.useState(false);
+  const [uploadedFile, setUploadedFile] = React.useState("Uploading...");
+  const [uploaded, setUploaded] = React.useState(false);
+  const dispatch = useAppDispatch();
+  const router = useRouter();
+  const [uploadError, setUploadError] = React.useState(false);
+  const { uid, firebaseToken } = useAppSelector((state) => state.user);
+
+  React.useEffect(() => {
+    const subcribe = onAuthStateChanged(Client.auth, (user) => {
+      if (user !== null) {
+        user.getIdToken().then((token) => {
+          dispatch(getUserDetails({ firebaseToken: token }));
+        });
+      } else {
+        router.push("/login/merchants/individuals");
+      }
+    });
+    return subcribe()
+  }, [dispatch, router]);
+
+  React.useEffect(() => {
+    //setTitle(props.title);
+    setDescription(props.textContent);
+    setFile({
+      preview: props.publicUri ?? props.image ?? "/loading.png",
+    });
+  }, [props.title, props.textContent, props.publicUri, props.image]);
+
+
+
+  const fileType =
+  fileName?.substring(fileName.lastIndexOf(".") + 1, fileName.length) ||
+  fileName;
+
+
+  const onDrop = useCallback((acceptedFiles, fileRejections) => {
+    if (fileRejections.length > 0) {
+      setError(true);
+    } else setError(false);
+    if (acceptedFiles.length > 0) {
+      const file = acceptedFiles[0];
+
+      setFile({
+        file: file,
+        preview: URL.createObjectURL(file),
+      });
+      // setFileName(file.file?.fileName);
+      console.log(file);
+      setFileUploaded(true);
+    }
+  }, []);
+
+  const { getRootProps, getInputProps } = useDropzone({
+    multiple: false,
+    maxSize: fileType == "mp4" ? 30000000 : 10000000, //10MB
+    accept: fileType == "mp4" ? ["video/mp4"] : ["image/*"],
+    onDrop,
+  });
+
+  const handleImageUpload = () => {
+    if (loading) {
+      return;
+    }
+    if (file !== null || file !== undefined) {
+      setLoading(true);
+      const storageRef = ref(Client.storage, props.fullPath);
+      if (file.file)
+        uploadBytes(storageRef, file.file, {
+          contentType: file.file.type,
+        }).then((snapshot) => {
+          const uploadPayload: ImageFeedData = {
+            fileName: file.file.name,
+            fullPath: snapshot.metadata.fullPath,
+            textContent: description,
+            generation: snapshot.metadata.generation,
+            uid: uid,
+            fp: props.fp,
+            metadata: props.metadata,
+          };
+          const payload: ReqPayload = {
+            payload: uploadPayload,
+            firebaseToken: firebaseToken,
+            modification: true,
+          };
+          fetch("/api/feed/upload-image", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(payload),
+          })
+            .then((response) => {
+              response
+                .json()
+                .then((data) => {
+                  if (!data.error) {
+                    setLoading(false);
+                    setUploaded(true);
+                    setUploadError(false);
+                    setUploadedFile("File Modified Successfully");
+                    props.triggerChanges();
+                  } else {
+                    setLoading(false);
+                    setUploaded(false);
+                    setUploadError(true);
+                    setUploadedFile("Upload Failed. Please try again");
+                  }
+                })
+                .catch((error) => {
+                  setLoading(false);
+                  setUploaded(false);
+                  setUploadError(true);
+                  setUploadedFile("Upload Failed. Please try again");
+                });
+            })
+            .catch((error) => {
+              setLoading(false);
+              setUploaded(false);
+              setUploadError(true);
+              setUploadedFile("Upload Failed. Kindly Retry");
+            });
+          setTimeout(() => setUploaded(false), 1500);
+        });
+      else {
+        const uploadPayload: ImageFeedData = {
+          fileName: props.fileName,
+          fullPath: props.fullPath,
+          textContent: description,
+          generation: props.generation,
+          uid: props.uid,
+          fp: props.fp,
+          metadata: props.metadata,
+        };
+        const payload: ReqPayload = {
+          payload: uploadPayload,
+          firebaseToken: firebaseToken,
+          modification: true,
+        };
+        fetch("/api/feed/upload-image", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        })
+          .then((response) => {
+            response.json().then((data) => {
+              if (!data.error) {
+                setLoading(false);
+                setUploaded(true);
+                setUploadError(false);
+                dispatch(
+                  getUserAndImageFeed({
+                    firebaseToken
+                  })
+                );
+                setUploadedFile("File Modified Successfully");
+                props.triggerChanges();
+              } else {
+                setLoading(false);
+                setUploaded(false);
+                setUploadError(true);
+                setUploadedFile("Upload Failed. Please try again");
+              }
+            });
+          })
+          .catch((error) => {
+            setLoading(false);
+            setUploaded(false);
+            setUploadError(true);
+            setUploadedFile("Upload Failed. Kindly Retry");
+          });
+        setTimeout(() => setUploaded(false), 1500);
+      }
+    }
+  };
+  return (
+    <div className={[classes.ModifiableStructure, "ThinScrollbar"].join(" ")}>
+		<label className={classes.TopLabel}>Upload Image / Video</label>
+		<Grid container spacing={{ xs: 2, md: 8 }} direction="row">
+			<Grid item md={6}>
+				
+				<div className={classes.UploadCanvas} {...getRootProps()}>
+					<input {...getInputProps()}></input>
+
+					{loading ? (
+					  <Spinner />
+					) : !fileUploaded ? (
+					  error ? (
+						<React.Fragment>
+						  <label style={{ color: "red" }}>
+							Invalid File! Either you have added a wrong file type or the
+							file size is more than 10MBs. Please try again
+						  </label>
+						  <Button className={"ThemeButtonBlack"}>Browse Files</Button>
+						</React.Fragment>
+					  ) : (
+						<React.Fragment>
+						  <label className={classes.UploadCanvas_title}>
+							Drag and Drop your files here.
+						  </label>
+						  <label className={classes.UploadCanvas_generic}> OR </label>
+						  <Button className={"ThemeButtonBlack"}>Browse Files</Button>
+						  <label>Provide Only Image Files</label>
+						</React.Fragment>
+					  )
+					) : (
+					  <div className={classes.CanvasImage}>
+						{fileType != "mp4" ? (
+						  <img
+							src={file.preview}
+							alt={"Uploaded"}
+							height={200}
+							width={'100%'}
+							// objectFit={"contain"}
+						  />
+						) : (
+						  <video
+							autoPlay
+							controls
+							muted
+							height={200}
+							width={'100%'}
+							src={file.preview}
+						  />
+						)}
+					  </div>
+					)}
+				</div>
+			</Grid>
+			<Grid item md={6}>
+      
+				<TextField
+				required
+				className={classes.FormInputField1}
+				label="Image Description"
+				size="small"
+				type="text"
+				placeholder="Type Here (500 characters max)"
+				multiline
+				rows={4}
+				value={description ?? ""}
+				onChange={(event) => setDescription(event.target.value)}
+				/>
+				  {loading || uploaded || uploadError ? (
+					<p
+					  className={
+						uploadError
+						  ? classes.UploadingStatusError
+						  : uploaded
+						  ? classes.UploadingStatusSuccess
+						  : classes.UploadingStatus
+					  }
+					>
+					  {uploadedFile}
+					</p>
+				  ) : null}
+				  <Button
+					onClick={handleImageUpload}
+					className={[classes.ThemeButtonBlack1, "ThemeButtonBlack", classes.ButtonWidth].join(" ")}
+				  >
+					Upload {props?.image ? 'Image' : 'Video'}
+				  </Button>
+			</Grid>
+		</Grid>
+    </div>
+  );
+}

@@ -1,0 +1,89 @@
+import Server from '../../firebase_server_exports';
+import { constDocumentRefs } from '../../constants/firestore';
+import type { ImageFeed as ImageFeedData } from '../../../redux/interfaces/backend/apis/ImageFeed';
+export const updateImageFeed = async (
+  data: ImageFeedData,
+  modification: boolean
+) => {
+  //Truncate more than 500 characters
+  try {
+    const truncatedText = data.textContent.substring(0, 500);
+    const feedCollection = Server.db.collection(
+      `${constDocumentRefs.users_feed_image}`
+    );
+    data.textContent = truncatedText;
+    !modification && (data.createdAt = new Date().toISOString());
+    data.modifiedAt = new Date().toISOString();
+    await feedCollection.doc(data.fp).set(data, { merge: true });
+    return true;
+  } catch (err) {
+    console.log('Error happened ', err);
+    return false;
+  }
+};
+
+export const deleteImageFeed = async (data: ImageFeedData) => {
+  const feedCollection = Server.db.collection(
+    `${constDocumentRefs.users_feed_image}`
+  );
+  try {
+    await feedCollection.doc(data.fp).delete();
+    //Delete stored Image as well
+    await Server.storage
+      .bucket(process.env.FB_STORAGE_BUCKET_NAME)
+      .file(data.fullPath)
+      .delete();
+    return { error: false };
+  } catch (err) {
+    return { error: true };
+  }
+};
+
+export const getImageFeeds = async (uid: string) => {
+  try {
+    const feedRef = Server.db
+      .collection(`${constDocumentRefs.users_feed_image}`)
+      .orderBy('modifiedAt', 'desc')
+      .limit(30);
+    const dataRef = await feedRef.get();
+    const feeds = await dataRef.docs.length;
+    return { error: false, data: feeds };
+  } catch (err) {
+    return { error: true };
+  }
+};
+
+export const getImageFeedsByIndices = async (
+  uid: string,
+  startIndex: number,
+  endIndex: number
+) => {
+  try {
+    const feedRef = Server.db
+      .collection(`${constDocumentRefs.users_feed_image}/${uid}`)
+      .offset(startIndex)
+      .limit(endIndex)
+      .orderBy('modifiedAt', 'desc');
+    const dataRef = await feedRef.get();
+    const feeds = await dataRef.docs.map((doc) => doc.data());
+    const uriPromises: any = [];
+    feeds.forEach(async (feed) => {
+      uriPromises.push(
+        Server.storage
+          .bucket(process.env.FB_STORAGE_BUCKET_NAME)
+          .file(feed.fullPath)
+          .getSignedUrl({
+            version: 'v4',
+            action: 'read',
+            expires: Date.now() + 2 * 60 * 60 * 1000, // 2 hours
+          })
+      );
+    });
+    const uris = await (await Promise.all(uriPromises)).map((uri) => uri[0]);
+
+    return { error: false, data: { feeds, uris: await uris } };
+  } catch (err) {
+    console.log('Error happened: ', err);
+    return { error: true, data: { feeds: [], uris: [] } };
+  }
+};

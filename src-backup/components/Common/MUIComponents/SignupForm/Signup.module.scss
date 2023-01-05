@@ -1,0 +1,17 @@
+@import '../LoginForm/Login.module.scss';
+@import '../../../../styles/root.scss';
+.Headers {
+  font-size: $font-size-xlarge;
+  font-family: $font-family;
+  font-weight: 400;
+  color: $dark-yellow;
+  @include respond(media-320-480) {
+    font-size: $font-size-large;
+  }
+  @include respond(media-480-600) {
+    font-size: $font-size-large;
+  }
+  @include respond(media-600-768) {
+    font-size: $font-size-large;
+  }
+}

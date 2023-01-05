@@ -1,0 +1,132 @@
+.ProductLayout {
+  width: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  -ms-grid-rows: (1fr)[6];
+      grid-template-rows: repeat(6, 1fr);
+  grid-column-gap: 1rem;
+}
+
+.Product {
+  width: 100%;
+}
+
+.Product_Title {
+  -ms-grid-column: 1;
+      grid-column-start: 1;
+  grid-column-end: 2;
+  -ms-grid-row: 1;
+      grid-row-start: 1;
+  grid-row-end: 2;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.Product_Pricing {
+  -ms-grid-column: 2;
+      grid-column-start: 2;
+  grid-column-end: 3;
+  -ms-grid-row: 1;
+      grid-row-start: 1;
+  grid-row-end: 2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-column-gap: 0.25rem;
+          column-gap: 0.25rem;
+}
+
+.Product_Location {
+  -ms-grid-column: 3;
+      grid-column-start: 3;
+  grid-column-end: 4;
+  -ms-grid-row: 1;
+      grid-row-start: 1;
+  grid-row-end: 2;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.Product_CurrencyType {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  border: none;
+  outline: none;
+}
+
+.Product_ImagwViewer {
+  -ms-grid-column: 1;
+      grid-column-start: 1;
+  grid-column-end: 4;
+  -ms-grid-row: 2;
+      grid-row-start: 2;
+  grid-row-end: 6;
+  max-height: 22rem;
+}
+
+.Product_CTA {
+  width: 30%;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.Product_CurrencyValue {
+  -webkit-box-flex: 9;
+      -ms-flex: 9;
+          flex: 9;
+}
+
+.Product_CurrencyValue input[type='number']::-webkit-outer-spin-button,
+.Product_CurrencyValue input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.Product_CurrencyValue input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+.RemaingElements {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  row-gap: 0.5rem;
+  width: 100%;
+}
+
+.Product_Category {
+  width: 30%;
+}
+
+@media screen and (max-width: 767px) {
+  .ProductLayout {
+    display: block;
+  }
+  .Product_Title {
+    margin-bottom: 20px;
+  }
+  .Product_Pricing {
+    margin-bottom: 20px;
+  }
+  .Product_Category {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .Product_CTA {
+    width: 100%;
+  }
+}
+/*# sourceMappingURL=AddProduct.module.css.map */

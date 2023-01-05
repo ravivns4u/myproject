@@ -1,0 +1,745 @@
+@import '../../styles/root.scss';
+
+.ResourcesPageSection
+{
+	margin-top:170px;
+}
+.ResourcesTabPanelDiv
+{
+}
+.ResourcesTabPanelDiv h3,.ResourcesTabPanelDiv1 h3
+{
+	font-family: 'Poppins';
+	font-style: italic;
+	font-weight: 600;
+	font-size: 35px;
+	line-height: 50px;
+	text-align: center;
+	color: #000000;
+}
+.ResourcesTabPanelHeading
+{
+	max-width:900px;
+	padding:1% 20px;
+	margin:auto;
+}
+.flipboxwrapper
+{
+    cursor: pointer;
+    display: flex;
+    overflow: hidden;
+	position:relative;
+	min-height:340px;
+	justify-content: center;
+    align-items: center;
+}
+.flipboxwrapper::before
+{
+    content: '';
+    background: url('/resources/merchantbg.png') no-repeat center center/cover;
+    position: absolute;
+    opacity: 1;
+    top: 0px;
+    left: 0px;
+    width: 40px;
+    height: 340px;
+    z-index: 9;
+}
+.flipinner
+{
+	position: relative;
+    margin: 0;
+    max-width: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+}
+.flipinner *, .flipinner:after, .flipinner:before {
+    box-sizing: border-box;
+    -webkit-transition: all .35s ease;
+    -moz-transition: all .35s ease;
+    transition: all .35s ease;
+}
+.flipinner:before
+{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    content: '';
+	-webkit-transform: translateY(100%);
+    -moz-transform: translateY(100%);
+    -ms-transform: translateY(100%);
+    -o-transform: translateY(100%);
+    transform: translateY(100%);
+}
+.flipinner:hover:before {
+    -webkit-transform: translate(0,0);
+    -moz-transform: translate(0,0);
+    -ms-transform: translate(0,0);
+    -o-transform: translate(0,0);
+    transform: translate(0,0);
+}
+.flipfront
+{
+    padding: 0px 40px;
+    background-color: #fff;
+	min-height: 340px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.flipboxicon
+{
+    padding: initial;
+	margin-left: auto;
+    margin-right: auto;
+	height: 70px;
+    width: auto;
+	max-width:70px;
+	margin-bottom: 20px;
+	transition: all ease 0.35s;
+    -webkit-transition: all ease 0.35s;
+    -moz-transition: all ease 0.35s;
+}
+.flipboxicon img
+{
+	width: auto;
+    height: 70px;
+}
+.flipboxtitle h5
+{
+    font-weight: 600;
+	font-size: 20px;
+	line-height: 25px;
+	text-align: center;
+	color: #000000;
+	margin:0px;
+
+}
+.flipboxcontent
+{
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 24px;
+	text-align: center;
+	color: #000000;margin-top:25px;
+}
+.flipback
+{
+    padding: 0px 40px;
+    background-color: #fff;
+	opacity: 0;
+	position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+	min-height: 340px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+.flipinner:hover .flipback {
+    opacity: 1;
+    -webkit-transition-delay: .21s;
+    -moz-transition-delay: .21s;
+    transition-delay: .21s;
+}
+.ResourcesTabPanelDiv
+{
+	padding:0 5%;
+}
+.ResourcesMerchantsTabPanel2
+{
+	padding:30px 0px 100px 0px;
+}
+
+.ResourcesHeaxgonPanel
+{
+	margin: 0 0 200px 0px;
+	width: 100%;
+	display: block;
+	
+}
+.ResourcesHeaxgonPanelInner
+{
+	width: 20%;
+    display: inline-block;
+}
+
+.ResourcesHeaxgonFigure
+{
+	display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    max-width: 100%;
+    height: 100%;
+    line-height: 1;
+    color: #fff;
+    transition: 0.75s 0.05s;
+    text-align: center;
+    padding: 0px 16%;
+}
+.ResourcesHeaxgonFigure p
+{
+	font-family: 'Poppins';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 15px;
+	line-height: 24px;
+	text-align: center;
+	color: #000000;
+	margin: 0 0 0px 0;
+}
+.ResourcesHeaxgonFigure h4
+{
+	z-index: 1;
+	padding: 0;
+	font-family: 'Poppins';
+	font-style: normal;
+	font-weight: 600;
+	font-size: 22px;
+	line-height: 26px;
+	text-align: center;
+	color: #000000;
+	margin: 0 0 20px 0;
+	padding: 0px 10px;
+}
+.ResourcesHeaxgonArticle1
+{
+	background: rgba(234, 234, 234, 1);
+    box-shadow: 0px 4px 8px rgb(0 0 0 / 35%);
+    width: 100%;
+    max-width: 170px;
+    height: 140px;
+	-webkit-clip-path: url(#hexagono);
+	clip-path: url(#hexagono);
+	-webkit-clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+    clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+	margin: 0 0 7% 65%;
+	color: #fff;
+	overflow: hidden;
+}
+
+.ResourcesHeaxgonArticle2
+{
+	background: #FFFF00;
+    box-shadow: 0px 4px 8px rgb(0 0 0 / 35%);
+    width: 100%;
+    max-width: 300px;
+    height: 280px;
+	-webkit-clip-path: url(#hexagono);
+	clip-path: url(#hexagono);
+	-webkit-clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+    clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+	margin: 0 0 7% 32%;
+	color: #fff;
+	overflow: hidden;
+}
+
+.ResourcesHeaxgonArticle3
+{
+	background: rgba(234, 234, 234, 1);
+    box-shadow: 0px 4px 8px rgb(0 0 0 / 35%);
+    width: 100%;
+    max-width: 98px;
+    height: 85px;
+	-webkit-clip-path: url(#hexagono);
+	clip-path: url(#hexagono);
+	-webkit-clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+    clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+	margin:0 0 75% 82%;
+	color: #fff;
+	overflow: hidden;
+	
+}
+.ResourcesHeaxgonArticle4
+{
+	background: #FFFF00;
+    box-shadow: 0px 4px 8px rgb(0 0 0 / 35%);
+    width: 100%;
+    height: 280px;
+	max-width: 300px;
+	-webkit-clip-path: url(#hexagono);
+	clip-path: url(#hexagono);
+	-webkit-clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+    clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+	margin: 0 0 7% 16%;
+	color: #fff;
+	overflow: hidden;
+}
+.ResourcesHeaxgonArticle5
+{
+	background: rgb(234, 234, 234);
+    box-shadow: 0px 4px 8px rgb(0 0 0 / 35%);
+    width: 100%;
+    height: 280px;
+	max-width: 300px;
+	-webkit-clip-path: url(#hexagono);
+	clip-path: url(#hexagono);
+	-webkit-clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+    clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+	margin:0 0 7% 16%;
+	color: #fff;
+	overflow: hidden;
+}
+.ResourcesHeaxgonArticle6
+{
+	background: rgb(234, 234, 234);
+    box-shadow: 0px 4px 8px rgb(0 0 0 / 35%);
+    width: 100%;
+    max-width: 160px;
+    height: 140px;
+	-webkit-clip-path: url(#hexagono);
+	clip-path: url(#hexagono);
+	-webkit-clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+    clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+	margin: 0 0 7% 51%;
+	color: #fff;
+	overflow: hidden;
+}
+.ResourcesHeaxgonArticle7
+{
+	background: rgba(234, 234, 234, 1);
+    box-shadow: 0px 4px 8px rgb(0 0 0 / 35%);
+    width: 100%;
+    height: 280px;
+	max-width: 300px;
+	-webkit-clip-path: url(#hexagono);
+	clip-path: url(#hexagono);
+	-webkit-clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+    clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+	margin: 9% 0px;
+	color: #fff;
+	overflow: hidden;
+}
+.ResourcesHeaxgonArticle8
+{
+	background: #FFFF00;
+    box-shadow: 0px 4px 8px rgb(0 0 0 / 35%);
+    width: 100%;
+    height: 280px;
+	max-width: 300px;
+	-webkit-clip-path: url(#hexagono);
+	clip-path: url(#hexagono);
+	-webkit-clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+    clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+	margin: 9% 0px;
+	color: #fff;
+	overflow: hidden;
+}
+.ResourcesHeaxgonArticle9
+{
+	background: #FFFF00;
+    box-shadow: 0px 4px 8px rgb(0 0 0 / 35%);
+    width: 100%;
+    height: 280px;
+	max-width: 300px;
+	-webkit-clip-path: url(#hexagono);
+	clip-path: url(#hexagono);
+	-webkit-clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+    clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+	margin: 9% 0px;
+	color: #fff;
+	overflow: hidden;
+}
+.ResourcesHeaxgonArticle10
+{
+	background: #FFFF00;
+    box-shadow: 0px 4px 8px rgb(0 0 0 / 35%);
+    width: 100%;
+    height: 280px;
+	max-width: 300px;
+	-webkit-clip-path: url(#hexagono);
+	clip-path: url(#hexagono);
+	-webkit-clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+    clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+	margin: 0 0 7% -15%;
+	color: #fff;
+	overflow: hidden;
+}
+.ResourcesHeaxgonArticle11
+{
+	background: rgb(234, 234, 234);
+    box-shadow: 0px 4px 8px rgb(0 0 0 / 35%);
+    width: 100%;
+	max-width: 300px;
+    height: 280px;
+	-webkit-clip-path: url(#hexagono);
+	clip-path: url(#hexagono);
+	-webkit-clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+    clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+	margin: 0 0 7% -15%;
+	color: #fff;
+	overflow: hidden;
+}
+.ResourcesHeaxgonArticle12
+{
+	background: rgb(234, 234, 234);
+    box-shadow: 0px 4px 8px rgb(0 0 0 / 35%);
+    width: 100%;
+    height: 280px;
+	max-width: 300px;
+	-webkit-clip-path: url(#hexagono);
+	clip-path: url(#hexagono);
+	-webkit-clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+    clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+	margin: 0 0 -40% -15%;
+	color: #fff;
+	overflow: hidden;
+}
+.ResourcesHeaxgonArticle13
+{
+	background: rgb(234, 234, 234);
+    box-shadow: 0px 4px 8px rgb(0 0 0 / 35%);
+    width: 100%;
+    max-width: 170px;
+    height: 140px;
+	-webkit-clip-path: url(#hexagono);
+	clip-path: url(#hexagono);
+	-webkit-clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+    clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+	margin: 0 0 -51% -21%;
+	color: #fff;
+	overflow: hidden;
+}
+.ResourcesHeaxgonArticle14
+{
+	background: rgb(234, 234, 234);
+    box-shadow: 0px 4px 8px rgb(0 0 0 / 35%);
+    width: 100%;
+    max-width: 98px;
+    height: 85px;
+	-webkit-clip-path: url(#hexagono);
+	clip-path: url(#hexagono);
+	-webkit-clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+    clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+	margin: 0 0 30% 32%;
+	color: #fff;
+	overflow: hidden;
+}
+.ResourcesHeaxgonArticle15
+{
+	background: #FFFF00;
+    box-shadow: 0px 4px 8px rgb(0 0 0 / 35%);
+    width: 100%;
+    height: 280px;
+	max-width: 300px;
+	-webkit-clip-path: url(#hexagono);
+	clip-path: url(#hexagono);
+	-webkit-clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+    clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+	margin: 0 0 108% -28%;
+	color: #fff;
+	overflow: hidden;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// FOOTER
+.lastPart{
+  background: #2F2F2F;
+    width: 100%;
+    color: #fff;
+    padding: 2rem;
+    float: left;
+}
+.gridDivision{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 2fr 3fr 2fr;
+  justify-content: center;
+  align-items:flex-start;
+}
+.innerGrid{
+  display: flex;
+  justify-content: flex-start;
+  align-items:flex-start;
+  width: 80%;
+  justify-content: space-between;
+}
+.ulPopularServices{
+  text-decoration: none;
+  list-style-type: none;
+  padding-left:0 !important;
+  margin-right:3rem;
+}
+
+.footerGrid1 .css-12bapnq-MuiAvatar-root{    width: 8rem;
+    height: 8rem;
+}
+
+.ulPopularServices li {
+  margin-bottom: 10px;font-size: 15px;
+}
+
+
+.copyrightSection{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;    font-size: 15px;
+}
+
+.copyrightSection button {
+  min-width: 40px;background: transparent;
+    border: 0;cursor:pointer;
+}
+
+.ulLegal1{
+  text-decoration: none;
+  list-style-type: none;
+  padding-left:0 !important;
+}
+
+.ulLegal1 li {
+  margin-bottom: 10px;font-size: 15px;
+}
+.headPopularService{
+  font-weight: 700;
+  font-size: 23px;
+  line-height: 25px;
+  font-style: normal;
+  margin-bottom: 15px;
+}
+.headLegals{
+  font-style: normal;
+  font-weight: 700;
+  font-size: 23px;
+  line-height: 25px;
+  margin-bottom: 28px;
+}
+.btnBookService,.footerGrid1 button{
+  background: #FFFF00;
+    border: 2px solid transparent;
+    padding: 0.5rem 2rem;
+    color: #000;
+    font-weight: 700;
+    font-size: 14px;
+    margin: 1rem 0;
+    border-radius: 4px;
+    text-transform: uppercase;cursor:pointer;
+}
+.btnBookService:hover,.footerGrid1 button:hover{
+border:2px solid #fff;
+color:#fff;background-color: rgba(85, 108, 214, 0.04);
+}
+.logoLastPart{
+  width: 8rem;
+  height: 8rem;
+  // border:2px solid #fff;
+  // border-radius: 50%;
+}
+.footerGrid1, .footerGrid2, .footerGrid3{
+  padding: 3rem 0;
+}
+@media only screen and (max-width:949px)
+{
+  .gridDivision{
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: 1fr;
+  }
+  .footerGrid1, .footerGrid2, .footerGrid3{
+    padding: 1em 0;
+  }
+  .thirdPart{
+    display: flex;
+    align-items: center;
+    margin: 2rem 0;
+    width: 100%;
+    grid-row-gap: 2rem;
+    row-gap: inherit;
+    grid-column-gap: 2rem;
+    -moz-column-gap: 2rem;
+    column-gap: 2rem;
+
+  }
+  .feedImg {
+    width:42%;
+    margin: inherit;
+  }
+  .itsTime, .aGreat, .breakFree{
+    text-align: center;
+  }
+  .midBtn{
+    margin:0 auto;
+    width:100%;   
+  }
+}
+@media only screen and (max-width:610px){
+.copyrightSection{
+  flex-direction: column;
+}
+
+}
+.footerGrid3.HdeDestop {
+  display: none;
+}
+@media screen and (max-width: 991px) {
+.thirdPart br {
+    display: none;
+  }
+  .gridDivision {
+    display: block;
+  } 
+}
+
+@media screen and (max-width: 767px) {
+.headPopularService {
+    font-size: 20px;
+    line-height: 15px;
+    margin-bottom: 5px;
+  }
+
+  .headLegals  {
+    margin-bottom: 15px;
+    font-size: 20px;
+
+  }
+
+  .copyrightSection  {
+    margin-top: 15px; 
+    flex-wrap: wrap;
+    justify-content: left;
+  }
+
+  .copyrightSection div {
+    margin-bottom: 5px;
+    width: 100%;
+  }
+
+ .footerGrid1, .footerGrid2, .footerGrid3{
+   padding-top: 0px;
+
+  }
+
+}
+@media screen and (max-width: 767px)
+{
+	.ResourcesPageSection
+	{
+		margin-top: 90px;
+	}
+	.ResourcesPageSection button
+	{
+		font-size: 17px;
+		padding: 10px 10px;
+		margin: 0px 15px;
+	}
+	.ResourcesTabPanelDiv
+	{
+		padding:0 20px;
+	}
+	.ResourcesTabPanelDiv h3,.ResourcesTabPanelDiv1 h3
+	{
+		font-size: 22px;
+		line-height: 35px;
+		margin-top:10px;
+	}
+	.ResourcesMerchantsTabPanel2
+	{
+    padding: 30px 0px 0px 0px;
+    width: 100%;
+    display: block;
+	}
+	.flipboxwrapper{margin-bottom:30px;}
+	.ResourcesHeaxgonPanelInner
+	{
+		width: 100%;
+		display: inline-block;
+	}
+	.ResourcesHeaxgonArticle1
+	{
+		margin:0 0 30px 20px;
+	}
+	.ResourcesHeaxgonArticle2
+	{
+		margin: 0 auto 30px auto;
+	}
+	.ResourcesHeaxgonArticle3
+	{
+		margin: -425px 0 0px calc(100% - 120px);
+	}
+	.ResourcesHeaxgonArticle4
+	{
+		margin: 330px auto 30px auto;
+	}
+	.ResourcesHeaxgonArticle5
+	{
+		margin:0 auto 30px auto;
+	}
+	.ResourcesHeaxgonArticle6
+	{
+		margin:0 auto 30px auto;
+		display:none;
+	}
+	
+	.ResourcesHeaxgonArticle7
+	{
+		margin:0 auto 30px auto;
+	}
+	
+	.ResourcesHeaxgonArticle8
+	{
+		margin:0 auto 30px auto;
+	}
+	
+	.ResourcesHeaxgonArticle9
+	{
+		margin:0 auto 30px auto;
+	}
+	
+	.ResourcesHeaxgonArticle10
+	{
+		margin:0 auto 30px auto;
+	}
+	.ResourcesHeaxgonArticle11
+	{
+		margin:0 auto 30px auto;
+	}
+	.ResourcesHeaxgonArticle12
+	{
+		margin:0 auto 30px auto;
+	}
+	.ResourcesHeaxgonArticle13
+	{
+		margin:0 auto 30px auto;
+	}
+	.ResourcesHeaxgonArticle14
+	{
+		margin:0 auto 30px auto;
+	}
+	.ResourcesHeaxgonArticle15
+	{
+		margin:-285px auto 30px auto;
+	}
+	
+	
+	
+}

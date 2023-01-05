@@ -11,6 +11,7 @@ import AdminCompanies from './Tables/Companies/AdminCompanies';
 import AdminEvents from './Tables/Events/AdminEvents';
 import AdminProducts from './Tables/AdminProducts/AdminProducts';
 import AdminServices from './Tables/Services/AdminServices';
+import AdminCms from './Tables/Services/AdminCms';
 import AdminUrgentRequest from './Tables/UrgentRequests/AdminUrgentRequests';
 
 export interface ImagePortfolioRow {
@@ -61,7 +62,7 @@ export default function AdminDashboard(props: IAdminDashboardProps) {
   const router = useRouter();
   const pageSection = router.query.merchantSlug?.[2] ?? comparitors.ACCOUNTS;
 
-  let Component = <div>Undefined Component</div>;
+  let Component = <div>Undefined Component new</div>;
   switch (pageSection) {
     case comparitors.ACCOUNTS: {
       Component = <AdminAccounts {...passProps} />;
@@ -88,7 +89,7 @@ export default function AdminDashboard(props: IAdminDashboardProps) {
       break;
     }
      case comparitors.CMS: {
-      Component = <AdminCompanies {...passProps} />;
+      Component = <AdminCms {...passProps} />;
       break;
     }
   }

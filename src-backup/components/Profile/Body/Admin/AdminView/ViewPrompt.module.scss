@@ -1,0 +1,13 @@
+@import '../../../../Common/MUIComponents/DialogPrompt/EditProfile/EditProfile.module.scss';
+
+.AdminToolbar {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.1rem 0.5rem;
+}
+.DialogExterior {
+  padding: 1rem 1rem 0;
+}

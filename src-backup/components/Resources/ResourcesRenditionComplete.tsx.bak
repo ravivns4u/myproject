@@ -1,0 +1,628 @@
+/* eslint-disable @next/next/no-img-element */
+import React from 'react';
+import classes from './ResourcesPage.module.scss';
+import IconButton from '@mui/material/IconButton';
+import Box from '@mui/material/Box';
+import { styled } from '@mui/system';
+import { buttonUnstyledClasses } from '@mui/base/ButtonUnstyled';
+import TabsUnstyled from '@mui/base/TabsUnstyled';
+import TabsListUnstyled from '@mui/base/TabsListUnstyled';
+import TabPanelUnstyled from '@mui/base/TabPanelUnstyled';
+import TabUnstyled, { tabUnstyledClasses } from '@mui/base/TabUnstyled';
+import Typography from '@mui/material/Typography';
+import SearchSharpIcon from '@mui/icons-material/SearchSharp';
+import { ArrowDropDown } from '@mui/icons-material';
+import { Avatar, Button, TextField } from '@mui/material';
+import Grid from '@mui/material/Grid';
+import Link from 'next/link';
+
+const blue = {
+  50: '#FFFF00',
+  100: '#C2E0FF',
+  200: '#80BFFF',
+  300: '#66B2FF',
+  400: '#FFFF00',
+  500: '#262423',
+  600: '#2F2F2F',
+  700: '#0059B2',
+  800: '#004C99',
+  900: '#003A75',
+};
+
+const Tab1 = styled(TabUnstyled)`
+  font-family: "Poppins", sans-serif;
+  line-height: 33px;
+  letter-spacing: 0.01em;
+  color: #000000;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 22px;
+  background-color: transparent;
+  width: 100%;
+  padding: 10px 15px;
+  margin: 0px 30px;
+  border: 2px solid #000000;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  &:hover {
+    background-color: ${blue[50]};
+    color: ${blue[600]};
+	box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+  }
+  &:focus {
+    background-color: ${blue[50]};
+    color: ${blue[600]};
+	box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+  }
+  &.${tabUnstyledClasses.selected} {
+    background-color: ${blue[50]};
+    color: ${blue[600]};
+	box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+  }
+  &.${buttonUnstyledClasses.disabled} {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+`;
+
+const TabPanel1 = styled(TabPanelUnstyled)`
+  width: 100%;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.875rem;
+`;
+
+const TabsList1 = styled(TabsListUnstyled)`
+  min-width: 320px;
+  padding: 0px;
+  max-width: 700px;
+  margin:auto;
+  background-color: transparent;
+  border-radius: 0px;
+  box-shadow: none;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: space-between;
+`;
+
+
+
+
+
+
+const ResourcesPageComplete = ({}) => {
+  
+  const [isActive, setActive] = React.useState(false);
+  const handleCtgry = () => {
+    setActive(!isActive);
+  };
+  
+  
+  
+return (
+	<section className={classes.ResourcesPageSection}>
+	
+		
+		<div className={classes.ResourcesStartedSection}>
+			
+			<div className={classes.ResourcesTabMainSection}>
+				<TabsUnstyled defaultValue={0}>
+					<TabsList1>
+						<Tab1>For Merchants</Tab1>
+						<Tab1>For Customers</Tab1>
+					</TabsList1>
+					<TabPanel1 value={0}>
+					
+						<div className={classes.ResourcesTabPanelDiv}>
+							<div className={classes.ResourcesTabPanelHeading}>
+								<h3>Turn your Passion into Productivity.<br/>Get Full Creative Freedom!</h3>
+							</div>
+							
+							<div className={classes.ResourcesMerchantsTabPanel}>
+							
+								<Grid container spacing={0} className={classes.ResourcesMerchantsTabPanel1} direction="row" justifyContent="center" alignItems="center">
+								
+								
+									<Grid item xs={3} className={classes.flipboxmain}>
+										<div className={classes.flipboxwrapper}>
+											<div className={classes.flipinner}>
+												<div className={classes.flipfront}>
+													<div className={classes.flipboxicon}>
+														<img src='resources/merchants/icon1.png' alt=''/>
+													</div>
+													<div className={classes.flipboxtitle}>
+														<h5 className={classes.sectiontitle}>Work as a Creative Freelancer</h5>
+													</div>
+												</div>
+												<div className={classes.flipback}>
+													<div className={classes.flipboxtitle}>
+														<h5 className={classes.sectiontitle}>Work as a Creative Freelancer</h5>
+													</div>
+													<div className={classes.flipboxcontent}>Work remotely on multiple projects, with full creative control- work on projects that interest you.</div>
+												</div>
+											</div>
+										</div>
+									</Grid>
+									<Grid item xs={3} className={classes.flipboxmain}>
+										<div className={classes.flipboxwrapper}>
+											<div className={classes.flipinner}>
+												<div className={classes.flipfront}>
+													<div className={classes.flipboxicon}>
+														<img src='resources/merchants/icon2.png' alt=''/>
+													</div>
+													<div className={classes.flipboxtitle}>
+														<h5 className={classes.sectiontitle}>Teach & Impart New Skills</h5>
+													</div>
+												</div>
+												<div className={classes.flipback}>
+													<div className={classes.flipboxtitle}>
+														<h5 className={classes.sectiontitle}>Teach & Impart New Skills</h5>
+													</div>
+													<div className={classes.flipboxcontent}>Share your knowledge on a global platform. Teach what you love! Or learn from the best and take a professional course online.</div>
+												</div>
+											</div>
+										</div>
+									</Grid>
+									<Grid item xs={3} className={classes.flipboxmain}>
+										<div className={classes.flipboxwrapper}>
+											<div className={classes.flipinner}>
+												<div className={classes.flipfront}>
+													<div className={classes.flipboxicon}>
+														<img src='resources/merchants/icon3.png' alt=''/>
+													</div>
+													<div className={classes.flipboxtitle}>
+														<h5 className={classes.sectiontitle}>Network Your Way to Success</h5>
+													</div>
+												</div>
+												<div className={classes.flipback}>
+													<div className={classes.flipboxtitle}>
+														<h5 className={classes.sectiontitle}>Network Your Way to Success</h5>
+													</div>
+													<div className={classes.flipboxcontent}>Build long-lasting connections and monetize your passion effectively.</div>
+												</div>
+											</div>
+										</div>
+									</Grid>
+									<Grid item xs={3} className={classes.flipboxmain}>
+										<div className={classes.flipboxwrapper}>
+											<div className={classes.flipinner}>
+												<div className={classes.flipfront}>
+													<div className={classes.flipboxicon}>
+														<img src='resources/merchants/icon4.png' alt=''/>
+													</div>
+													<div className={classes.flipboxtitle}>
+														<h5 className={classes.sectiontitle}>Connect to Relevant Buyers</h5>
+													</div>
+												</div>
+												<div className={classes.flipback}>
+													<div className={classes.flipboxtitle}>
+														<h5 className={classes.sectiontitle}>Connect to Relevant Buyers</h5>
+													</div>
+													<div className={classes.flipboxcontent}>By offering numerous services, attract multiple buyers-from varied fields! The opportunities are endless.</div>
+												</div>
+											</div>
+										</div>
+									</Grid>
+								</Grid>
+								
+								
+								
+								
+								<Grid container spacing={0} className={classes.ResourcesMerchantsTabPanel2} direction="row" justifyContent="center" alignItems="center">
+								
+								
+									<Grid item xs={3} className={classes.flipboxmain}>
+										<div className={classes.flipboxwrapper}>
+											<div className={classes.flipinner}>
+												<div className={classes.flipfront}>
+													<div className={classes.flipboxicon}>
+														<img src='resources/merchants/icon5.png' alt=''/>
+													</div>
+													<div className={classes.flipboxtitle}>
+														<h5 className={classes.sectiontitle}>Break-Free Support</h5>
+													</div>
+												</div>
+												<div className={classes.flipback}>
+													<div className={classes.flipboxtitle}>
+														<h5 className={classes.sectiontitle}>Break-Free Support</h5>
+													</div>
+													<div className={classes.flipboxcontent}>Our tech team works endlessly to get you highlighted on top and our support team is here for you to help with any disputes.</div>
+												</div>
+											</div>
+										</div>
+									</Grid>
+									<Grid item xs={3} className={classes.flipboxmain}>
+										<div className={classes.flipboxwrapper}>
+											<div className={classes.flipinner}>
+												<div className={classes.flipfront}>
+													<div className={classes.flipboxicon}>
+														<img src='resources/merchants/icon6.png' alt=''/>
+													</div>
+													<div className={classes.flipboxtitle}>
+														<h5 className={classes.sectiontitle}>Feedback & Scope of Improvement</h5>
+													</div>
+												</div>
+												<div className={classes.flipback}>
+													<div className={classes.flipboxtitle}>
+														<h5 className={classes.sectiontitle}>Feedback & Scope of Improvement</h5>
+													</div>
+													<div className={classes.flipboxcontent}>Organic feedback, to help you innovate, excel and become a better version of what you do!</div>
+												</div>
+											</div>
+										</div>
+									</Grid>
+									<Grid item xs={3} className={classes.flipboxmain}>
+										<div className={classes.flipboxwrapper}>
+											<div className={classes.flipinner}>
+												<div className={classes.flipfront}>
+													<div className={classes.flipboxicon}>
+														<img src='resources/merchants/icon7.png' alt=''/>
+													</div>
+													<div className={classes.flipboxtitle}>
+														<h5 className={classes.sectiontitle}>100% Transparency</h5>
+													</div>
+												</div>
+												<div className={classes.flipback}>
+													<div className={classes.flipboxtitle}>
+														<h5 className={classes.sectiontitle}>100% Transparency</h5>
+													</div>
+													<div className={classes.flipboxcontent}>Be upfront by defining your scope, timing, price, and terms. And accept opportunities that match your creative and financial goals.</div>
+												</div>
+											</div>
+										</div>
+									</Grid>
+									<Grid item xs={3} className={classes.flipboxmain}>
+										<div className={classes.flipboxwrapper}>
+											<div className={classes.flipinner}>
+												<div className={classes.flipfront}>
+													<div className={classes.flipboxicon}>
+														<img src='resources/merchants/icon8.png' alt=''/>
+													</div>
+													<div className={classes.flipboxtitle}>
+														<h5 className={classes.sectiontitle}>Safety Guaranteed</h5>
+													</div>
+												</div>
+												<div className={classes.flipback}>
+													<div className={classes.flipboxtitle}>
+														<h5 className={classes.sectiontitle}>Safety Guaranteed</h5>
+													</div>
+													<div className={classes.flipboxcontent}>Work with verified clients. Get fair and timely payments.</div>
+												</div>
+											</div>
+										</div>
+									</Grid>
+								</Grid>
+								
+							</div>
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+						</div>
+						
+					</TabPanel1>
+					<TabPanel1 value={1}>
+						
+						<div className={classes.ResourcesTabPanelDiv1}>
+							<div className={classes.ResourcesTabPanelHeading}>
+								<h3>Hire Top Talent, Book Events, Learn New Skills, and Shop from Top Artists- Just Break Free!</h3>
+							</div>
+							
+							<div className={classes.ResourcesCustomersTabPanel}>
+							
+								<div className={classes.ResourcesHeaxgonPanel}>
+									<div className={classes.ResourcesHeaxgonPanelInner}>
+										<div className={classes.ResourcesHeaxgonArticle1}>
+											<div className={classes.ResourcesHeaxgonFigure}>
+											</div>
+										</div>
+										<div className={classes.ResourcesHeaxgonArticle2}>
+											<div className={classes.ResourcesHeaxgonFigure}>
+												<h4>User Friendly</h4>
+												<p>Find the right person, at the right time and place. Our advanced algorithms help you shortlist candidates who are the best fit.</p>
+											</div>
+										</div>
+										<div className={classes.ResourcesHeaxgonArticle3}>
+											<div className={classes.ResourcesHeaxgonFigure}>
+											</div>
+										</div>
+									</div>
+									<div className={classes.ResourcesHeaxgonPanelInner}>
+										<div className={classes.ResourcesHeaxgonArticle4}>
+											<div className={classes.ResourcesHeaxgonFigure}>
+												<h4>Infinite Creators</h4>
+												<p>Designers, writers, musicians, marketers, videographers, photographers - we have it all.</p>
+											</div>
+										</div>
+										<div className={classes.ResourcesHeaxgonArticle5}>
+											<div className={classes.ResourcesHeaxgonFigure}>
+												<h4>Hiring Made Easy</h4>
+												<p>Check their portfolio, qualifications, similar projects they have worked on, ratings, reviews of all our creators, and communicate effectively.</p>
+											</div>
+										</div>
+										<div className={classes.ResourcesHeaxgonArticle6}>
+											<div className={classes.ResourcesHeaxgonFigure}>
+											</div>
+										</div>
+									</div>
+									<div className={classes.ResourcesHeaxgonPanelInner}>
+										<div className={classes.ResourcesHeaxgonArticle7}>
+											<div className={classes.ResourcesHeaxgonFigure}>
+												<h4>Hire a Pro</h4>
+												<p>From a pool of endless talent, explore the ones that suit your requirements.</p>
+											</div>
+										</div>
+										<div className={classes.ResourcesHeaxgonArticle8}>
+											<div className={classes.ResourcesHeaxgonFigure}>
+												<h4>Break-Free Support</h4>
+												<p>Our tech team works endlessly to find you the best talent and our support team is here for you to help with any disputes.</p>
+											</div>
+										</div>
+										<div className={classes.ResourcesHeaxgonArticle9}>
+											<div className={classes.ResourcesHeaxgonFigure}>
+												<h4>Book an Event</h4>
+												<p>Explore your adventurous side, and book upcoming events exclusively on Break Free Workshops, Seminars, Art Exhibits, Live Comedy, Cultural Events, and more.</p>
+											</div>
+										</div>
+									</div>
+									<div className={classes.ResourcesHeaxgonPanelInner}>
+										<div className={classes.ResourcesHeaxgonArticle10}>
+											<div className={classes.ResourcesHeaxgonFigure}>
+												<h4>100% Transparency</h4>
+												<p>Describe your project&apos;s details, timeline, scope - and choose your way to get work done.</p>
+											</div>
+										</div>
+										<div className={classes.ResourcesHeaxgonArticle11}>
+											<div className={classes.ResourcesHeaxgonFigure}>
+												<h4>Safety Guaranteed</h4>
+												<p>Work with verified creators only. Your satisfaction is our priority.</p>
+											</div>
+										</div>
+										<div className={classes.ResourcesHeaxgonArticle12}>
+											<div className={classes.ResourcesHeaxgonFigure}>
+												<h4>Shop Authentic Art</h4>
+												<p>Support independent creators by purchasing original artworks, paintings, sculptors, installations, customized merchandise, and more.</p>
+											</div>
+										</div>
+									</div>
+									<div className={classes.ResourcesHeaxgonPanelInner}>
+										<div className={classes.ResourcesHeaxgonArticle13}>
+											<div className={classes.ResourcesHeaxgonFigure}>
+											</div>
+										</div>
+										<div className={classes.ResourcesHeaxgonArticle14}>
+											<div className={classes.ResourcesHeaxgonFigure}>
+											</div>
+										</div>
+										<div className={classes.ResourcesHeaxgonArticle15}>
+											<div className={classes.ResourcesHeaxgonFigure}>
+												<h4>Learn World - Renowned Skills</h4>
+												<p>Learn a new skill from the comfort of your home with thousands of creative courses online- Illustration, Design, Photography, Animation, and more.</p>
+											</div>
+										</div>
+										
+									</div>
+									
+									
+									
+								</div>
+								
+							</div>
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+						</div>
+						
+					</TabPanel1>
+				</TabsUnstyled>
+			</div>
+			
+			
+		</div>
+		
+		
+		
+		<div className={classes.lastPart}>
+			
+			<div className={classes.gridDivision}>
+				<div className={classes.footerGrid1}>
+					<Avatar
+					className={classes.logoLastPart}
+					variant={'rounded'}
+					src={'welcomePage/breakFree2.png'}
+					/>
+					<div className={classes.soulSaid}>SOUL SAYS BREAK FREE</div>
+					<Button className={classes.btnBookService}>Book a service</Button>
+				</div>
+				<div className={classes.footerGrid2}>
+					<div className={classes.headPopularService}>POPULAR SERVICES</div>
+					<div className={classes.innerGrid}>
+						<ul className={classes.ulPopularServices}>
+							<li>
+								<a className={classes.lineText} href=''>
+									Art
+								</a>
+							</li>
+							<li>
+								<a className={classes.lineText} href=''>
+									Dance
+								</a>
+							</li>
+							<li>
+								<a className={classes.lineText} href=''>
+									Music
+								</a>
+							</li>
+							<li>
+								<a className={classes.lineText} href=''>
+									Fashion
+								</a>
+							</li>
+							<li>
+								<a className={classes.lineText} href=''>
+									Actor
+								</a>
+							</li>
+						</ul>
+
+						<ul className={classes.ulPopularServices}>
+							<li>
+								<a className={classes.lineText} href=''>
+									Photography
+								</a>
+							</li>
+							<li>
+								<a className={classes.lineText} href=''>
+									Comedy
+								</a>
+							</li>
+							<li>
+								<a className={classes.lineText} href=''>
+									Layer
+								</a>
+							</li>
+							<li>
+								<a className={classes.lineText} href=''>
+									Rap
+								</a>
+							</li>
+							<li>
+								<a className={classes.lineText} href=''>
+									Blogger
+								</a>
+							</li>
+						</ul>
+        
+						<ul className={classes.ulPopularServices}>
+							<li>
+								<a className={classes.lineText} href=''>
+									Designer
+								</a>
+							</li>
+							<li>
+								<a className={classes.lineText} href=''>
+									CA
+								</a>
+							</li>
+							<li>
+								<a className={classes.lineText} href=''>
+									DJ
+								</a>
+							</li>
+							<li>
+								<a className={classes.lineText} href=''>
+									Writer
+								</a>
+							</li>
+						  </ul>
+					</div>
+				</div>
+				<div className={classes.footerGrid3}>
+					<div className={classes.headLegals}>LEGAL</div>
+					<ul className={classes.ulLegal1}>
+						<li>
+							<Link href="/termsandconditions">
+								<a className={classes.lineText}>Terms and conditions</a>
+							</Link>
+						</li>
+						<li>
+							<Link href="/privacypolicy">
+								<a className={classes.lineText}>Privacy Policy</a>
+							</Link>		
+						</li>
+					</ul>
+				</div>
+				
+				<div className={[classes.footerGrid3, classes.HdeDestop].join(' ')}>
+					<div className={classes.headLegals}>Links</div>
+					<ul className={classes.ulLegal1}>
+						<li>
+							<Link href="/aboutus">
+								<a className={classes.lineText}>About Us</a>
+							</Link>
+						</li>
+						<li>
+							<Link href="/resources">
+								<a className={classes.lineText}>Resources</a>
+							</Link>	
+						</li>
+					</ul>
+				</div>
+				
+				
+				
+				
+			</div>
+		
+			<hr/>
+			
+			<div className={classes.copyrightSection}>
+				<div className={classes.copyRights}>
+					© Break Free 2021. All reights reserved
+				</div>
+				<div className={classes.iconEnd}>
+					<Button className={classes.btnLast}>
+						<img
+						className={classes.imgLast}
+						src='welcomePage/twitter.svg'
+						alt=''
+						/>
+					</Button>
+					<Button className={classes.btnLast}>
+						<img
+						className={classes.imgLast}
+						src='welcomePage/instagram.svg'
+						alt=''
+						/>
+					</Button>
+					<Button className={classes.btnLast}>
+						<img
+						className={classes.imgLast}
+						src='welcomePage/linkedin.svg'
+						alt=''
+						/>
+					</Button>
+					<Button className={classes.btnLast}>
+						<img
+						className={classes.imgLast}
+						src='welcomePage/facebook.svg'
+						alt=''
+						/>
+					</Button>
+				</div>
+			</div>
+		
+		</div>
+		
+		
+		
+		
+		
+	</section>
+	
+	
+	
+  );
+};
+export default ResourcesPageComplete;

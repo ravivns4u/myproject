@@ -92,8 +92,15 @@ const adminActionButtons = [
     buttonImage: '/sidebar-icons/feed.svg',
     buttonTitle: 'CMS',
     comparitor: 'cms',
-    href: (userId: string) => returnPathTemplate(userId, '/cms/images'),
-    isAdmin: true,
+    href: (userId: string) => returnPathTemplate(userId, '/cms/verified'),
+   
+  },
+  {
+    buttonImage: '/sidebar-icons/feed.svg',
+    buttonTitle: 'TermsNew',
+    comparitor: 'termsnew',
+    href: (userId: string) => returnPathTemplate(userId, '/termsnew'),
+   
   },
 ];
 
@@ -115,13 +122,6 @@ const actionButtons = [
     buttonTitle: 'Events',
     comparitor: 'events',
     href: (userId: string) => returnPathTemplate(userId, '/events/verified'),
-  },
-  {
-    buttonImage: '/sidebar-icons/event.svg',
-    buttonTitle: 'CMS',
-    comparitor: 'cms',
-    href: (userId: string) => returnPathTemplate(userId, '/cms/verified'),
-     isAdmin: true,
   },
   {
     buttonImage: '/sidebar-icons/product.svg',
@@ -154,14 +154,7 @@ const actionButtons = [
     comparitor: 'feed',
     href: (userId: string) => returnPathTemplate(userId, '/feed/images'),
     isAdmin: true,
-  },
-   {
-    buttonImage: '/sidebar-icons/feed.svg',
-    buttonTitle: 'Cms',
-    comparitor: 'cms',
-    href: (userId: string) => returnPathTemplate(userId, '/cms/images'),
-    isAdmin: true,
-  },
+  }
 ];
 
 const showSubscriptionButton = [
@@ -222,12 +215,7 @@ const orderRequest = [
     comparitor: 'feed',
     href: (userId: string) => returnPathTemplate(userId, '/feed/images'),
   },
-   {
-    buttonTitle: 'Cms',
-    buttonImage: '/sidebar-icons/feed.svg',
-    comparitor: 'Cms',
-    href: (userId: string) => returnPathTemplate(userId, '/cms/images'),
-  },
+  
 ];
 
 interface Props {

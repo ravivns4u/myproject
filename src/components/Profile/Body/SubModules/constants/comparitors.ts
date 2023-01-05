@@ -10,6 +10,7 @@ export const comparitors = {
   EVENTS: 'events',
   SERVICES: 'services',
   PRODUCTS: 'products',
+  CMS: 'cms',
 
   ACCOUNTS: 'accounts',
   COMPANIES: 'companies',
@@ -20,6 +21,7 @@ export const sections = {
   PORTFOLIO: 'portfolio',
   FEED: 'feed',
   SERVICES: 'services',
+  CMS: 'cms',
   EVENTS: 'events',
   PRODUCTS: 'products',
   ORDER_REQUESTS: 'order-requests',
@@ -27,6 +29,7 @@ export const sections = {
   ADMIN_DASHBOARD: 'admin-dashboard',
   PAYMENTS: 'payment',
   TERMS: 'terms',
+  TERMSNEW: 'termsnew',
   SUBCRIPTIONMODULE: 'subscription-module',
   MERCHANTNDA: 'merchant-nda'
 } as const;

@@ -246,7 +246,7 @@ export default function MerchantFeed({}: Props) {
         <div className={classes.artistInfo}>
           <img className={classes.artistAvator} src='/feedPage/artistImg.png'
             alt=''/>
-          <div className={classes.artistName}>John Doe</div>
+          <div className={classes.artistName}>John Doe NEW</div>
           <div className={classes.artistNext}>
           <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
 <circle cx="20" cy="20" r="20" fill="#FFFF00"/>

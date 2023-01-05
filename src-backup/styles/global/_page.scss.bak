@@ -1,0 +1,1214 @@
+@import '../global/mixins';
+@import url('https://fonts.cdnfonts.com/css/circular-std');
+html {
+  @include respond(media-less-than-320) {
+    font-size: 75%;
+  }
+  @include respond(media-320-480) {
+    font-size: 80%;
+  }
+  @include respond(media-480-600) {
+    font-size: 100%;
+  }
+  @include respond(media-600-768) {
+    font-size: 100%;
+  }
+  @include respond(media-768-900) {
+    font-size: 100%;
+  }
+  @include respond(media-900-1024) {
+    font-size: 100%;
+  }
+  @include respond(media-1024-1280) {
+    font-size: 85%;
+  }
+  @include respond(media-more-than-1280) {
+    font-size: 100%;
+  }
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#__next {
+  height: auto;
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 1120px) { 
+  #__next {
+    height: auto;
+    width: 100%;
+    overflow: hidden;
+  }
+}
+
+.Mobfixmncr {
+  display: none;
+}
+
+.Drpdwnlngout {
+    position: absolute;
+    background: #fff;
+    right: -5px;
+    padding: 7px 20px;
+    border-radius: 5px;
+    box-shadow: 10px 10px 10px #eee;
+    top: 100%;
+    z-index: 1;
+}
+
+.Drpdwnlngout ul {
+  padding: 0px;
+  margin: 0px;
+  list-style-type: none;
+}
+
+.Drpdwnlngout ul li a {
+  color: #000;
+}
+
+.Hdrlogo img {
+  object-fit: contain;
+}
+
+.Center button {
+  padding: 0px 40px;
+}
+
+.Notification {
+  position: relative;
+}
+
+.BxCmvr,.CrtMnvSwn {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  color: #fff;
+  background: #F30000;
+  border-radius: 50%;
+  font-size: 11px;
+  text-align: center;
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: -15px;
+  left: 10px;
+
+}
+
+.CrtMnvSwn {
+  top: 5px;
+  left: 42px;
+}
+
+.Srchbox {
+  position: relative;
+  display: inline-block;
+  width: 260px;
+}
+
+.Srchbox input {
+  padding: 10px 20px;
+  padding-left: 40px;
+  border: 1px solid #C5C5C5;
+  border-radius: 30px;
+  width: 100%;
+  font-size: 16px;
+  color: #DADADA;
+}
+
+.Srchbox input::placeholder {
+  color: #DADADA;
+}
+
+.Srchbox a {
+  display: inline-block;
+  position: absolute;
+  left: 10px;
+  top: 5px;
+  line-height: 0;
+}
+
+.Srchbox a svg {
+  width: 19px;
+  color: #DADADA;
+}
+
+.Srchbox a svg path {
+  fill: #DADADA;
+}
+
+.footerGrid3.HdeDestop {
+  display: none;
+}
+
+.BtnPrvemvrTgle {
+  position: relative;
+    display: inline-block;
+    width: 40px;
+    line-height: 0;
+    margin-left: 15px;
+    display: none;
+}
+
+.BtnPrvemvrTgle span {
+  display: inline-block;
+  width: 100%;
+  height: 1px;
+  background-color: #000;
+}
+
+.RtpCtgryMvr {
+  width: 40%;
+}
+
+.Clsem {
+  display: none;
+}
+
+.Hdrlogo
+{
+	margin-right: 25px;
+    width: 90px;
+    height: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+
+}
+
+.SprteSec {
+  padding: 25px 15px;
+  background: #eee;
+  position: relative;
+}
+
+.CtgryDrpDwn {
+  background: #fff;
+  position: absolute;
+  left: -2px;
+  right: -2px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  transition: all 1s ease;
+  border-top: 1px solid #eee;
+  opacity: 0;
+  visibility: hidden;
+  top: 65px;
+
+}
+
+.CtgryDrpDwn ul {
+  padding: 5px 0px;
+  margin: 0px;
+  padding-bottom: 10px;
+}
+
+.CtgryDrpDwn ul li {
+  list-style-type: none;
+}
+
+.CtgryDrpDwn ul li a {
+  display: block;
+  padding: 2px 10px ;
+  text-align: left;
+  font-size: 14px;
+  color: #666;
+  font-weight: 400;
+}
+
+.CtgryDrpDwn.CygryActive {
+  top: 35px;
+  opacity: 1;
+  visibility: visible;
+  z-index: 1;
+
+
+}
+
+#primary-search-account-menu button {
+  padding: 5px;
+}
+
+#primary-search-account-menu ul li p {
+  margin: 0px;
+}
+
+#primary-search-account-menu button p {
+  margin: 0px 0px;
+}
+
+.Clsemhdr {
+  display: none;
+}
+
+@media screen and (max-width: 991px) {
+  
+  .SprteSec {
+    padding: 15px 15px;
+  }
+
+  .Clsemhdr {
+    display: inline-block;
+    position: absolute;
+    right: 15px;
+    top: 18px;
+    width: 18px;
+    cursor: pointer;
+  }
+
+  .Clsemhdr img {
+    width: 100%;
+  }
+
+  .Clsem {
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: 13px;
+    width: 20px;
+    cursor: pointer;
+  }
+
+  .Mobfixmncr.HdrShem {
+    display: block;
+  }
+  .Mobfixmncr {
+    display: none;
+  }
+  .RtpCtgryMvr {
+    margin-left: 15px;
+  }
+
+  .BxCmvr, .CrtMnvSwn {
+    width: 18px;
+    height: 18px;
+    font-size: 8px;
+  }
+
+  .CrtMnvSwn{
+    top: -9px;
+    left: 18px;
+  }
+
+  .BxCmvr {
+    top: -8px;
+  }
+
+  .Mobfixmncr {
+    display: block;
+    position: fixed;
+    left: -15px;
+    top: 0px;
+    bottom: 0px;
+    width: 30%;
+    background: #fff;
+    z-index: 3;
+    display: none;
+    padding: 22px;
+    transition: all 1s ease;
+  }
+
+  .Mobfixmncr button {
+    padding-left: 22px;
+    position: relative;
+    display: block;
+  }
+
+  .headerIcons svg {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: -7px;
+    top: 9px;
+  }
+
+  .BtnPrvemvrTgle {
+    width: 30px;
+    display: inline-block;
+    margin-left: 0px;
+    position: relative;
+    z-index: 1;
+    cursor: pointer;
+  }
+
+  html,body {
+    overflow: auto;
+  }
+
+  .BtnTgleHdr span {
+    display: inline-block;
+    width: 100%;
+    height: 1px;
+    background-color: #fff;
+}
+.light-mode .BtnTgleHdr span {
+    display: inline-block;
+    width: 100%;
+    height: 1px;
+    background-color: #fff;
+}
+}
+
+.Srchbox a img {
+  width: 30px;
+}
+
+.BtnTgleHdr {
+  display: none;
+}
+
+@media screen and (max-width: 767px) { 
+
+   .RtpCtgryMvr {  
+    width: 100%;
+    margin-left: 0px;
+  }
+
+  .BtnTgleHdr {
+    width: 30px; 
+    display: inline-block;
+    margin-left: 0;
+    position: absolute;
+    z-index: 1; 
+    right: 0px;
+    top: 2px;
+    line-height: 0;
+    cursor: pointer;
+  }
+
+ 
+
+
+  .PdrRgtIcon:last-child {
+    padding-right: 40px;
+  }
+
+  .BtnPrvemvrTgle {
+    margin-left: 15px;
+  }
+
+  .Notification {
+    margin-right: 8px;
+  }
+
+  .footerGrid3.HdeDestop {
+    display: block;
+  }
+
+  .OrdrRequstSve {
+    width: 100% !important;
+  }
+
+  .CtgryDrpDwn ul li a {
+    font-size: 13px;
+  }
+
+  .css-cyxlny-MuiPaper-root-MuiDialog-paper {
+    width: calc(100% - 25px);
+    max-height: calc(100% - 50px);
+    margin: 0px;
+  }
+
+  .HdrLeftbtn.HdrTgleSwn {
+    left: 0px;
+    pointer-events: inherit;
+    visibility: visible;
+    opacity: 1;
+  }
+ 
+  .HdrLeftbtn {
+      position: fixed !important;
+      z-index: 10;
+      left: 0px;
+      background: #ffffff;
+      height: 100%;
+      bottom: 0;
+      width: 100%;
+      display: block;
+      opacity: 0;
+      pointer-events: none;
+      visibility: hidden;
+      left: -100%;
+      padding: 25px;
+      transition: all 1s ease;
+  }
+
+  .HdrLeftbtn ul li {
+    display: block !important;
+  }
+
+  .HdrLeftbtn ul li a {
+    display: block;
+    padding: 5px;
+    font-size: 16px !important;
+  }
+
+
+
+  .css-204u17-MuiDataGrid-main {
+    height: 250px;
+  }
+
+
+  .Mobfixmncr {
+    z-index: 172;
+    width: 100%;
+  }
+
+  .prev1 svg {
+    width: 22px;
+  } 
+
+  .next1 svg {
+    width: 22px;
+  }
+ 
+  .swiper-slide {
+    width: 100% !important;
+  }
+
+
+  header.headermain {
+    z-index: 999999;
+  }
+  .Clsem{
+    width: 15px;
+  }
+
+  .Clsem img {
+    width: 100%;
+  }
+  .Srchbox {
+    display: none;
+  }
+
+  .Hdrlogo {
+        height: auto;
+    width: 60px;
+    margin-right: 18px;
+    position: absolute;
+    left: 0px;
+    display: block;
+    margin-top: 4px;
+	margin-bottom: 4px;
+  }
+
+  .Hdrlogo img {
+    width: 100%;
+    text-align: left;
+    text-indent: inherit;
+  }
+
+  .RightSide {
+    position: absolute;
+    right: 0px;
+    width: auto;
+  }
+
+  .Notification svg {
+    width: 20px;
+    height: 20px;
+  }
+  .CrtMnvSwn {
+    left: 14px;
+    top: -3px;
+  }
+
+  .BxCmvr, .CrtMnvSwn {
+    width: 13px;
+    height: 13px;
+    font-size: 8px;
+  }
+
+  .BxCmvr {
+    top: -3px;
+  }
+
+  .Drpdwnlngout {
+    position: absolute;
+    background: #fff;
+    right: 35px;
+    padding: 15px 13px;
+    border-radius: 3px;
+    box-shadow: 10px 10px 10px #eee;
+    top: 100%;
+    z-index: 1;
+  }
+
+  .BodyContainer .CTAButton {
+    position: absolute;
+    top: 0px;
+    height: 30px;
+  }
+
+  .ButtonWidth {
+    width: 100% !important;
+  }
+
+  .MuiPhoneNumber-flagButton svg {
+    display: block !important;
+  }
+
+
+  .Login_ActionContainer .textPrimary {
+    justify-content: flex-end ;
+  } 
+
+  .HdrSwnvr {
+    width: 100%;
+    display: block;
+    top: 8px;
+    
+  }
+
+  
+
+}
+.prev,
+.prev1 {
+  position: absolute;
+  left: 0px;
+}
+
+
+
+.next,
+.next1 {
+  position: absolute;
+  right: 0px;
+}
+
+.VdeItm {
+  width: 100%;
+  height: 100%;
+}
+
+.VdeItm .Swnvrimg {
+  height: 100%;
+}
+
+.VdeIcn {
+
+  position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 50px;
+    height: 50px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    text-align: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    color: #fff;
+    cursor: pointer;
+    z-index: 1;
+
+}
+
+.VdeIcn::before {
+  top: 50%;
+  right: 0;
+  bottom: 0;
+  left: 50%;
+  position: absolute;
+  content: "";
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  background: #ffffff;
+  border-radius: 50%;
+  display: block;
+  -webkit-animation: pulse-border 1500ms ease-out infinite;
+  animation: pulse-border 1500ms ease-out infinite;
+  width: 60px;
+  height: 60px;
+}
+
+.VdeIcn img {
+  margin: 0 auto;
+    width: 5px;
+    height: auto;
+}
+
+.VdeItm {
+  position: relative;
+}
+
+.VdeItm .Swnvrimg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+@keyframes pulse-border {
+  0% {
+    -webkit-transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1);
+            transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1);
+    opacity: 0.5;
+  }
+  100% {
+    -webkit-transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1.5);
+            transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1.5);
+    opacity: 0;
+  }
+}
+
+// Events Pages 
+
+.BckAllColorEvnt {
+  background-color: #DBDBDB;
+  width: 100%;
+  height: 100vh;
+} 
+
+.headermain {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.headermain::before{
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  top: -200%;
+  width: 100%;
+  content: '';
+  background-color: #fff;
+  height: 100%;
+  transition: all 0.5s ease;
+  box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
+}
+
+.headermain.normalheader::before {
+  top: 0px;
+}
+
+.HdrLeftbtn {
+  position: relative;
+}
+
+.HdrLeftbtn ul {
+  padding: 0px;
+  margin: 0px;
+}
+
+.HdrLeftbtn ul li {
+  display: inline-block; 
+  margin-right: 35px;
+}
+
+.HdrLeftbtn ul li a {
+  color: #000;
+  text-transform: uppercase;
+}
+
+.OrdrRequstSve {
+  position: relative;
+  display: inline-block;
+  padding: 30px;
+  background: #eee;
+  width: 50%;
+  text-align: left;
+  border-radius: 10px;
+  margin-top: 25px;
+}
+
+.OrdrRequstSve h1 {
+  margin: 0px;
+  padding: 0px;
+  font-size: 20px;
+}
+
+.OrdrRequstSve h2 {
+  margin: 0;
+  padding: 0px;
+  font-size: 16px;
+}
+
+.OrdrRequstSve h3 {
+  margin: 0;
+  padding: 0px;
+  font-size: 16px;
+}
+
+.OrdrRequstSve button {
+  margin-top: 20px;
+  display: inline-block;
+  padding: 11px 20px;
+  background-color: #000;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+}
+.lightlogo 
+{
+display:none;cursor:pointer;
+}
+.light-mode .Hdrlogo
+{
+display:none;cursor:pointer;
+}
+.light-mode .Hdrlogo.lightlogo
+{
+    display: block;cursor:pointer;
+}
+.Hdrlogo img{cursor:pointer;}
+.headermain
+{
+    background-color: #000;
+}
+.light-mode .headermain
+{
+    background-color: transparent;
+}
+.headermain::before
+{
+background-color: #000;
+}
+.light-mode .headermain::before
+{
+background-color: #fff;
+}
+.HdrLeftbtn ul li a {
+    color: #fff;
+    text-transform: capitalize;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 27px;
+    letter-spacing: 0.01em;
+}
+.light-mode .HdrLeftbtn ul li a
+{
+    color: #000;
+}
+
+// FOOTER
+.lastPart{
+  background: #2F2F2F;
+    width: 100%;
+    color: #fff;
+    padding: 2rem;
+    float: left;
+}
+.gridDivision{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 2fr 3fr 2fr;
+  justify-content: center;
+  align-items:flex-start;
+}
+.innerGrid{
+  display: flex;
+  justify-content: flex-start;
+  align-items:flex-start;
+  width: 80%;
+  justify-content: space-between;
+}
+.ulPopularServices{
+  text-decoration: none;
+  list-style-type: none;
+  padding-left:0 !important;
+  margin-right:3rem;
+}
+
+.footerGrid1 .css-12bapnq-MuiAvatar-root{    width: 8rem;
+    height: 8rem;
+}
+
+.ulPopularServices li {
+  margin-bottom: 10px;font-size: 15px;
+}
+
+
+.copyrightSection{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;    font-size: 15px;
+}
+
+.copyrightSection button {
+  min-width: 40px;background: transparent;
+    border: 0;cursor:pointer;
+}
+
+.ulLegal1{
+  text-decoration: none;
+  list-style-type: none;
+  padding-left:0 !important;
+}
+
+.ulLegal1 li {
+  margin-bottom: 10px;font-size: 15px;
+}
+.headPopularService{
+  font-weight: 700;
+  font-size: 23px;
+  line-height: 25px;
+  font-style: normal;
+  margin-bottom: 15px;
+}
+.headLegals{
+  font-style: normal;
+  font-weight: 700;
+  font-size: 23px;
+  line-height: 25px;
+  margin-bottom: 28px;
+}
+.btnBookService,.footerGrid1 button{
+  background: #FFFF00;
+    border: 2px solid transparent;
+    padding: 0.5rem 2rem;
+    color: #000;
+    font-weight: 700;
+    font-size: 14px;
+    margin: 1rem 0;
+    border-radius: 4px;
+    text-transform: uppercase;cursor:pointer;
+}
+.btnBookService:hover,.footerGrid1 button:hover{
+border:2px solid #fff;
+color:#fff;background-color: rgba(85, 108, 214, 0.04);
+}
+.logoLastPart{
+  width: 8rem;
+  height: 8rem;
+  // border:2px solid #fff;
+  // border-radius: 50%;
+}
+.footerGrid1, .footerGrid2, .footerGrid3{
+  padding: 3rem 0;
+}
+@media only screen and (max-width:949px)
+{
+  .gridDivision{
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: 1fr;
+  }
+  .footerGrid1, .footerGrid2, .footerGrid3{
+    padding: 1em 0;
+  }
+  .thirdPart{
+    display: flex;
+    align-items: center;
+    margin: 2rem 0;
+    width: 100%;
+    grid-row-gap: 2rem;
+    row-gap: inherit;
+    grid-column-gap: 2rem;
+    -moz-column-gap: 2rem;
+    column-gap: 2rem;
+
+  }
+  .feedImg {
+    width:42%;
+    margin: inherit;
+  }
+  .itsTime, .aGreat, .breakFree{
+    text-align: center;
+  }
+  .midBtn{
+    margin:0 auto;
+    width:100%;   
+  }
+}
+@media only screen and (max-width:610px){
+.copyrightSection{
+  flex-direction: column;
+}
+
+}
+@media screen and (max-width: 991px) {
+.thirdPart br {
+    display: none;
+  }
+  .gridDivision {
+    display: block;
+  } 
+}
+
+@media screen and (max-width: 767px) {
+.headPopularService {
+    font-size: 20px;
+    line-height: 15px;
+    margin-bottom: 5px;
+  }
+
+  .headLegals  {
+    margin-bottom: 15px;
+    font-size: 20px;
+
+  }
+
+  .copyrightSection  {
+    margin-top: 15px; 
+    flex-wrap: wrap;
+    justify-content: left;
+  }
+
+  .copyrightSection div {
+    margin-bottom: 5px;
+    width: 100%;
+  }
+
+ .footerGrid1, .footerGrid2, .footerGrid3{
+   padding-top: 0px;
+
+  }
+
+}
+
+.AboutusPage_AboutPageMainTabLabel___Fr36.Mui-selected
+{
+color: #2F2F2F !important;
+background: #FFFF00 !important;
+}
+.MuiTabs-indicator{display:none;}
+
+.AboutusPage_AboutGetStartedMainTabLabel__Hk9fq.Mui-selected
+{
+color: #2F2F2F !important;
+background: #FFFF00 !important;
+box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+}
+.light-mode .headermain.is-sticky {
+    background-color: #000;
+}
+.light-mode .headermain.is-sticky .HdrLeftbtn ul li a {
+    color: #fff;
+}
+
+.light-mode .headermain.is-sticky .Hdrlogo
+{
+    display: block;
+}
+.light-mode .headermain.is-sticky .Hdrlogo.lightlogo
+{
+    display: none;
+}
+
+@media screen and (max-width: 767px)
+{
+	.light-mode .headermain {
+    background-color: #000;
+}
+.HdrLeftbtn.HdrTgleSwn ul li a {
+    color: #000;    font-size: 16px !important;
+    text-transform: uppercase;
+}
+
+}
+
+
+[class*='MuiModal-root'] {
+  z-index: 9999999!important;
+}
+
+
+
+
+.pricing-col *{
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.pricing-col *:hover {
+  transition: all 0.3s ease;
+}
+
+.pricing-col ul li {
+  list-style-type: none;
+}
+
+.pricing-col .btn-primary {
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.pricing-col .btn-primary:hover {
+  transition: all 0.3s ease;
+}
+.pricingsection{max-width:800px;margin:auto;    width: 100%;}
+
+.pricing {
+  color: #fff;
+}
+
+.pricing-row .pricing-4 {
+  height: 100%;
+  min-height:500px;
+  background: rgb(239 199 83 / 68%);
+  color: #333;
+  border-radius: 292px 33px 0 0;
+  text-align: center;
+  position: relative;
+  padding-top: 1px;
+  transition: .5s all ease;
+}
+
+.pricing-row .pricing-4:hover {
+  animation-name: a-4;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+}
+
+@keyframes a-4 {
+  20% {
+    border-radius: 292px 200px 0 400px;
+  }
+}
+
+.pricing-row .pricing-4 .pricing-title {
+  background: #ffffff55;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  padding: 8px 0;
+  margin: 30px 0 0 140px;
+}
+
+.pricing-row .pricing-4 .price {
+      width: 130px;
+    height: 130px;
+    background: #fff;
+    border: 5px solid rgb(239 199 83);
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: -15px;
+    left: 50px;
+}
+
+.pricing-row .pricing-4 .price .currency {
+  font-size: 17px;
+  font-weight: bold;
+  margin: -30px 2px 0 -11px;
+}
+
+.pricing-row .pricing-4 .price .num {
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: -15px;
+}
+
+.pricing-row .pricing-4 .period {
+  font-size: 12px;
+  font-weight: bold;
+  position: absolute;
+  bottom: 23px;
+}
+
+.pricing-row .pricing-4 .specs {
+  width: 100%;
+  font-size: 15px;
+  margin: 90px 0 120px -16px;
+}
+
+.pricing-row .pricing-4 .specs li {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.pricing-row .pricing-4 .circle4,
+.pricing-row .pricing-4 .btn-primary {
+  width: 221px;
+  height: 58px;
+  background: rgb(239 199 83);
+  color: #000;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 52px 0 0 0;
+  border: none;
+  position: absolute;
+  right: 0;
+  bottom: 0;cursor:pointer;
+}
+
+.pricing-row .pricing-4 .circle4:hover,
+.pricing-row .pricing-4 .btn-primary:hover {
+  background: #000 !important;
+  color: #fff;
+}
+
+.pricing-row .pricing-4 .circle4 {
+  width: 60px;
+  height: 58px;
+  background: #ffffffbb;
+  color: rgb(239 199 83);
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 0 43px 0 0;
+  opacity: .4;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 9px 9px 0 0;
+  pointer-events: none;
+}
+
+.pricing-row .pricing-4.business {
+  background: #e5e8ac;
+}
+
+.pricing-row .pricing-4.business .price {
+  border-color: #e5e8ac;
+}
+
+.pricing-row .pricing-4.business .btn-primary {
+  background: #009688;
+}
+
+.pricing-row .pricing-4.business .circle4 {
+  color: #009688;
+}
+
+.pricing-row .pricing-4.premium {
+  background: rgb(255 255 0 / 30%);
+}
+
+.pricing-row .pricing-4.premium .price {
+  border-color: #FFFF00;
+}
+
+.pricing-row .pricing-4.premium .btn-primary {
+  background: #FFFF00;
+}
+
+.pricing-row .pricing-4.premium .circle4 {
+  color: #FFFF00;
+}

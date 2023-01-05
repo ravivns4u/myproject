@@ -16,13 +16,13 @@ import AdminViewPrompt from './Admin/AdminView/ViewPrompt';
 import ApproveView from './Admin/AdminView/ApproveView';
 import {
   approveServices,
+  approveCms,
   approveAccounts,
   getProfileImage,
 } from '../../../redux/slices/profile';
 import ViewUser from '../../Common/MUIComponents/DialogPrompt/EditProfile/ViewOtherProfile';
 import PortfolioComponent from './SubModules/Portfolio';
 import FeedComponent from './SubModules/Feed';
-import CmsComponent from './SubModules/Cms';
 import { sections } from './SubModules/constants/comparitors';
 import ServicesPortfolio from './SubModules/Services/ServicesModule';
 import EventsSection from './SubModules/Events/EventsSection';
@@ -32,6 +32,8 @@ import SubscriptionSection from './SubModules/Subscription/Subscription';
 import AdminDashboard from './SubModules/AdminDashboard/AdminDashboard';
 import PaymentSection from './SubModules/Payment/Payment';
 import Terms from './SubModules/Terms/Terms';
+import Termsnew from './SubModules/Termsnew/Terms';
+import CmsPortfolio from './SubModules/Cms/CmsModule';
 import SubscriptionModule from './SubModules/Subscription-Module/Subscription-Module';
 import MerchantNda from './SubModules/Merchant-Nda/Merchant-Nda';
 
@@ -94,31 +96,29 @@ const actionButtons = [
       },
     ],
   },
-  {
+ {
     header: 'Cms',
     comparitor: 'cms',
     showAddNew: true,
-    buttonText: 'cms',
+    buttonText: 'Cms',
     availableOptions: [
       {
-        comparitor: 'images',
-        buttonTitle: 'Image',
+        buttonTitle: 'Approved',
+        comparitor: 'verified',
         href: (userId: string) =>
-          returnPathTemplate(userId, '/cms/images'),
+          returnPathTemplate(userId, '/cms/verified'),
       },
       {
-        comparitor: 'videos',
-        buttonTitle: 'Videos',
-
+        buttonTitle: 'Awaiting',
+        comparitor: 'pending',
         href: (userId: string) =>
-          returnPathTemplate(userId, '/cms/videos'),
+          returnPathTemplate(userId, '/cms/pending'),
       },
       {
-        comparitor: 'text',
-        buttonTitle: 'Text',
-
+        buttonTitle: 'Rejected',
+        comparitor: 'rejected',
         href: (userId: string) =>
-          returnPathTemplate(userId, '/cms/text'),
+          returnPathTemplate(userId, '/cms/rejected'),
       },
     ],
   },
@@ -199,6 +199,7 @@ const actionButtons = [
       },
     ],
   },
+
   {
     header: 'Order Requests',
     comparitor: 'order-requests',
@@ -209,6 +210,12 @@ const actionButtons = [
         comparitor: 'events',
         href: (userId: string) =>
           returnPathTemplate(userId, '/order-requests/events'),
+      },
+      {
+        buttonTitle: 'Cms',
+        comparitor: 'cms',
+        href: (userId: string) =>
+          returnPathTemplate(userId, '/order-requests/cms'),
       },
       {
         buttonTitle: 'Services',
@@ -243,6 +250,14 @@ const actionButtons = [
   {
     header: 'Terms & Conditions',
     comparitor: 'terms',
+    showAddNew: false,
+    availableOptions: [
+      
+    ],
+  },
+   {
+    header: 'Termsnew & Conditions',
+    comparitor: 'termsnew',
     showAddNew: false,
     availableOptions: [
       
@@ -294,6 +309,12 @@ const actionButtons = [
           returnPathTemplate(userId, '/admin-dashboard/services'),
       },
       {
+        buttonTitle: 'Cms',
+        comparitor: 'cms',
+        href: (userId: string) =>
+          returnPathTemplate(userId, '/admin-dashboard/cms'),
+      },
+      {
         buttonTitle: 'Products',
         comparitor: 'products',
         href: (userId: string) =>
@@ -337,14 +358,17 @@ interface Props {
     data: DeleteDataTypes,
     product?: boolean,
     event?: boolean,
-    service?: boolean
+    service?: boolean,
+    cms?: boolean
   )
   => void;
    deleteData1: (
     data: DeleteDataTypes,
     product?: boolean,
     event?: boolean,
-    service?: boolean
+    service?: boolean,
+    cms?: boolean
+
   )
   => void;
 }
@@ -437,7 +461,17 @@ export default function Body(props: Props): ReactElement {
           inVerified: accept,
         })
       );
-    } else if (pageSection === 'services' && pageRoute === 'admin-dashboard') {
+    }else if (pageSection === 'cms' && pageRoute === 'admin-dashboard') {
+      dispatch(
+        approveCms({
+         eventLocations: activeRowIds,
+          firebaseToken,
+          inVerified: accept,
+        })
+      );
+    }
+
+     else if (pageSection === 'services' && pageRoute === 'admin-dashboard') {
       dispatch(
         approveServices({
           eventLocations: activeRowIds,
@@ -481,7 +515,7 @@ export default function Body(props: Props): ReactElement {
     }
   }, [pageRoute, isLoggedIn, router, isAdmin]);
 
-  let RenderComponent = <div>Undefined Component</div>;
+  let RenderComponent = <div>Undefined Component hjhjhjjhjh</div>;
 
   switch (pageRoute) {
     case sections.PORTFOLIO: {
@@ -535,7 +569,7 @@ export default function Body(props: Props): ReactElement {
     }
     case sections.CMS: {
       RenderComponent = (
-        <CmsComponent
+        <CmsPortfolio
           navbarProps={{
             merchantSlug,
             availableOptions,
@@ -552,9 +586,7 @@ export default function Body(props: Props): ReactElement {
           }}
           openEditPrompt={openEditPrompt}
           deleteData={deleteData}
-          deleteData1={deleteData1}
-
-
+          handleProfileView={handleProfileView}
         />
       );
       break;
@@ -681,6 +713,20 @@ export default function Body(props: Props): ReactElement {
     case sections.TERMS: {
       RenderComponent = (
         <Terms
+        />
+      );
+      break;
+    }
+    case sections.TERMSNEW: {
+      RenderComponent = (
+        <Termsnew
+        />
+      );
+      break;
+    }
+    case sections.CMS: {
+      RenderComponent = (
+        <Cms
         />
       );
       break;

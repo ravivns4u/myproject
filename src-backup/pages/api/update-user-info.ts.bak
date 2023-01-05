@@ -1,0 +1,47 @@
+import type { NextApiHandler } from "next";
+import { getAccountApproval } from "../../firebase/db/accountApproval";
+import {
+  errorResponse as eR,
+  genericResponse as gR,
+} from "../../lib/backend/responseSynthesizer";
+import Server from "../../firebase/firebase_server_exports";
+import { updateUserData } from "../../firebase/db/firestore";
+import type { ExpectedUpdaeUserPayload } from "../../redux/interfaces/backend/apis/UpdateUser";
+export async function getStaticProps() {
+  return { props: { isDark: true } };
+}
+const countHandler: NextApiHandler = async (request, response) => {
+  const { firebaseToken, updatedUserData } =
+    request.body ;
+  try {
+    const decodedToken = await Server.auth.verifyIdToken(firebaseToken);
+    const { adminApproved, merchantSlug, account } = await getAccountApproval(
+      decodedToken.uid
+    );
+    if (!account || !merchantSlug) {
+      response.status(403).json(eR({ msg: "Invalid Request" }));
+      return;
+    }
+    if (adminApproved) {
+	//console.log(updatedUserData);
+      const rsp = await updateUserData(decodedToken.uid, updatedUserData);
+	  
+      if (rsp.error) {
+        console.log("Error = ", rsp.error);
+        response.status(400).json(eR({ msg: rsp.msg, rsp:rsp.error}));
+        return;
+      }
+      response.status(200).json(gR({ msg: "Update Successful" }));
+      return;
+    }
+  } catch (e) {
+    response.status(401).json(
+      eR({
+        msg: "Invalid User",
+	
+      })
+    );
+  }
+};
+
+export default countHandler;
